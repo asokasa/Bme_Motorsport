@@ -1,0 +1,35 @@
+.kapcsolatok{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.kapcs_cards{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    
+}
+
+.card{
+    
+    border-radius: 20px;
+    background-color: rgb(162, 8, 8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin-inline: 2rem;
+    margin-top: 2rem;
+    
+    
+
+}
+
+.card h3{
+    font-size: 200%;
+    padding-top: 1rem;
+    padding-inline: 1rem;
+
+}

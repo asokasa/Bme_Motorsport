@@ -1,0 +1,25 @@
+*{
+    margin: 0;
+    padding: 0;
+    overflow-y: scroll; /* Ensure it's scrollable */
+  scrollbar-width: none; /* Firefox */
+}
+
+.content-area{
+  width: 100%;
+}
+
+
+h1, h2, h3{
+  font-family: "Audiowide", serif;
+  font-weight: 600;
+  font-style: normal;
+  
+}
+
+p, a{
+  font-family: "Raleway", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-style: normal;
+}

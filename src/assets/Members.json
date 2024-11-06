@@ -1,0 +1,136 @@
+{
+    "leaders": [
+      {
+        "id": 1,
+        "name": "John Doe",
+        "title": "Software Engineer",
+        "image": "https://example.com/images/john.jpg"
+      },
+      {
+        "id": 2,
+        "name": "Jane Smith",
+        "title": "Product Manager",
+        "image": "https://example.com/images/jane.jpg"
+      }
+    ],
+
+
+
+    "motor": [
+      {
+        "id": 3,
+        "name": "Alice Johnson",
+        "title": "UI/UX Designer",
+        "image": "https://example.com/images/alice.jpg"
+      },
+      {
+        "id": 4,
+        "name": "Bob Brown",
+        "title": "Senior Advisor",
+        "image": "https://example.com/images/bob.jpg"
+      }
+    ],
+
+    "mechanika": [
+      {
+        "id": 3,
+        "name": "Alice Johnson",
+        "title": "UI/UX Designer",
+        "image": "https://example.com/images/alice.jpg"
+      },
+      {
+        "id": 4,
+        "name": "Bob Brown",
+        "title": "Senior Advisor",
+        "image": "https://example.com/images/bob.jpg"
+      }
+    ],
+
+    "kompozit": [
+      {
+        "id": 3,
+        "name": "Alice Johnson",
+        "title": "UI/UX Designer",
+        "image": "https://example.com/images/alice.jpg"
+      },
+      {
+        "id": 4,
+        "name": "Bob Brown",
+        "title": "Senior Advisor",
+        "image": "https://example.com/images/bob.jpg"
+      }
+    ],
+
+    "hybrid": [
+      
+      {
+        "id": 3,
+        "name": "Alice Johnson",
+        "title": "UI/UX Designer",
+        "image": "https://example.com/images/alice.jpg"
+      },
+
+
+
+      {
+        "id": 4,
+        "name": "Bob Brown",
+        "title": "Senior Advisor",
+        "image": "https://example.com/images/bob.jpg"
+      }
+
+
+
+    ],
+
+    "elektronika": [
+      
+      {
+        "id": 3,
+        "name": "Alice Johnson",
+        "title": "UI/UX Designer",
+        "image": "https://example.com/images/alice.jpg"
+      },
+
+
+
+      {
+        "id": 4,
+        "name": "Bob Brown",
+        "title": "Senior Advisor",
+        "image": "https://example.com/images/bob.jpg"
+      }
+
+
+
+    ],
+
+    "marketing": [
+      
+      {
+        "id": 3,
+        "name": "Alice Johnson",
+        "title": "UI/UX Designer",
+        "image": "https://example.com/images/alice.jpg"
+      },
+
+
+
+      {
+        "id": 4,
+        "name": "Bob Brown",
+        "title": "Senior Advisor",
+        "image": "https://example.com/images/bob.jpg"
+      }
+
+
+
+    ]
+
+
+
+
+
+
+  }
+  
