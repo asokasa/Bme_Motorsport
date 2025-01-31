@@ -1,0 +1,11 @@
+.hirek_wrap{
+    background-color: black;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hirek_wrap h2{
+    font-size: 400%;
+}

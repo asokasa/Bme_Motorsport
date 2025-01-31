@@ -1,0 +1,83 @@
+.formula_student{
+    margin:0;
+    padding: 0;
+    box-sizing: border-box;
+    width: 100%;
+    position: relative;
+
+    background-color: black;
+    min-height: 100vh;
+
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    
+}
+
+
+
+.formula_student h2{
+    color: black;
+    font-size: 300%;
+    margin-left: 15%;
+    margin-bottom: 1%;
+}
+
+
+.formula_student p{
+    color: black;
+    font-size: 130%;
+    text-align: justify;
+    width: 70%;
+    align-self: center;
+    font-weight: 400;
+
+}
+
+
+.elso_feher h3{
+    margin-left: 15%;
+    font-size: 180%;
+    margin-bottom: 4%;
+}
+
+
+.elso_feher{
+    background-color: white;
+    display: flex;
+
+    width: 100%;
+   
+    
+    justify-content: center;
+    flex-direction: column;
+}
+
+
+.elso_feher, .masodik {
+    z-index: 1;
+    
+}
+
+.masodik{
+    background-color: white;
+    margin-top: -10%;
+    display: flex;
+    justify-content: center;
+    
+    
+}
+
+
+.background_cars{
+    background-image: url('/assets/fs_parallax.jpg');
+    background-size: cover;
+    width: 100%;
+    background-position: center;
+    height: 100%; /* Ensures full layer coverage */
+    z-index: 0;
+    margin-top: 30%;
+}

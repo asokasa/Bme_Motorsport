@@ -1,17 +1,44 @@
+
+@font-face {
+  font-family: 'Korakati';
+  src: url('./fonts/korakati_font/korataki.otf') format('opentype'),
+       url('./fonts/korakati_font/korataki_bold.otf') format('opentype');
+
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+
 *{
-    margin: 0;
-    padding: 0;
-    overflow-y: scroll; /* Ensure it's scrollable */
+  margin: 0;
+  padding: 0;
+  overflow-y: scroll; /* Ensure it's scrollable */
   scrollbar-width: none; /* Firefox */
 }
 
+.app-layout {
+  width: 100%;
+  overflow-x: hidden; /* Prevents any overflow */
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  height: 100%;
+  
+}
+
+
+
+
 .content-area{
   width: 100%;
+  margin-top: -3%;
+  height: 110vh;
 }
 
 
 h1, h2, h3{
-  font-family: "Audiowide", serif;
+  font-family: 'Korakati';
   font-weight: 600;
   font-style: normal;
   
@@ -23,3 +50,22 @@ p, a{
   font-weight: 600;
   font-style: normal;
 }
+
+
+
+
+.blur-line{
+  height: 70px;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 170, 159, 0.5);
+  backdrop-filter: blur(10px); /* Applies the blur effect */
+  -webkit-backdrop-filter: blur(10px); /* For Safari compatibility */
+  z-index: 4;
+
+}
+
+
+

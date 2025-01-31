@@ -1,7 +1,22 @@
+
+
+
 .kapcsolatok{
+    width: 100%;
     display: flex;
     align-items: center;
     flex-direction: column;
+    background-color: rgb(0, 0, 0);
+}
+
+.kapcsolatok h2{
+    color: rgb(234, 234, 234);
+    padding-top: 10%;
+    font-size: 5em;
+    text-shadow: 3px 3px 5px #00aca1c8;
+    padding-bottom: 2%;
+
+    
 }
 
 .kapcs_cards{
@@ -9,27 +24,80 @@
     align-items: center;
     justify-content: center;
     flex-wrap: wrap;
+    padding-block: 5%;
+    width: 100%;
+    
+
+    
     
 }
 
 .card{
     
+    
+
+    text-align: center;
+    width: 29rem;
+    height: 20rem;
     border-radius: 20px;
-    background-color: rgb(162, 8, 8);
+    background-color: rgb(8, 2, 2);
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    margin-inline: 2rem;
+    margin-inline: 5%;
     margin-top: 2rem;
+    box-shadow: 0 0 10px rgba(0, 255, 255, 0.7), 0 0 20px rgba(0, 255, 255, 0.7), 0 0 30px rgba(0, 255, 255, 0.7);
+    transition: box-shadow 0.3s ease;
     
     
 
 }
 
+
+.card:hover {
+    box-shadow: 0 0 15px rgba(0, 255, 255, 1), 0 0 25px rgba(0, 255, 255, 1), 0 0 35px rgba(0, 255, 255, 1);
+}
+
+
+.card:nth-child(3){
+    margin-top: 5vw;
+}
+
 .card h3{
     font-size: 200%;
-    padding-top: 1rem;
+    margin-top: -3vw;
     padding-inline: 1rem;
+    color: rgb(234, 234, 234);
 
+}
+
+
+.card a{
+    text-decoration: none;
+    color: rgb(234, 234, 234);
+}
+
+.map_container{
+    width: 80%;
+    padding-top: 7%;
+    text-align: center;
+    padding-bottom: 5%;
+     
+}
+
+
+.map_container h3{
+
+    color: rgb(234, 234, 234);
+    text-shadow: 3px 3px 5px #00aca1c8;
+    font-size: 400%;
+    padding-bottom: 8%;
+    transition: text-shadow 0.3s ease;
+}
+
+
+.map_container h3:hover{
+    text-shadow:  0 0 3px rgba(0, 255, 255, 1), 0 0 4px rgba(0, 255, 255, 1), 0 0 5px rgba(0, 255, 255, 1);
+    
 }

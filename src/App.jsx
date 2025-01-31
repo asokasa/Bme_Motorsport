@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Header from './g_comps/My_Header';
+import Footer from './g_comps/My_Footer';
 import HomePage from './pages/HomePage';
 import Kapcsolatok from './pages/Kapcsolatok';
 import Tamogatoink from './pages/Tamogatoink';
@@ -14,7 +15,10 @@ import './App.css';
 function App() {
   return (
     <Router>
-      <div className="app-layout">
+      <div className="app-layout">ű
+        <div className="blur-line">
+          
+        </div>
         <Header />
         <main className="content-area">
 
@@ -26,9 +30,13 @@ function App() {
             <Route path="/hirek" element={<Hirek />} />
             <Route path="/galeria" element={<Galeria />} />
             <Route path="/formula_student" element={<Formula_Student />} />
-            <Route path="*" element={<h2>404 - Not Found</h2>} /> {/* Fallback for undefined routes */}
+            <Route path="*" element={<h2>404 - Not Found</h2>} /> {/* Fallback*/}
           </Routes>
+
+
+
         </main>
+
       </div>
     </Router>
   );

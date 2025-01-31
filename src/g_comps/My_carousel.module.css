@@ -1,0 +1,30 @@
+.carouselContainer {
+    margin-top:  6vw;
+    text-align: center; /* Center content in the carousel */
+  }
+  
+  .carouselItem {
+    display: flex;
+    flex-direction: column; /* Stack the image and alt text */
+    align-items: center; /* Center the content */
+  }
+  
+  .carouselImage {
+    height: 40vw; /* Set a fixed height for uniform size */
+     /* Set a fixed width for uniform size */
+    object-fit: cover; /* Ensures all images are cropped to fit the dimensions */
+    border-radius: 10px; /* Optional: adds rounded corners */
+  }
+  
+  .imageAlt {
+    font-size: 0.9rem;
+    color: #666;
+    margin-top: 0.5rem;
+  }
+  
+  .carouselCaption {
+    margin-top: 1rem; /* Add spacing between the caption and the image */
+    font-size: 1rem;
+    position: static; /* Ensure caption appears below the alt text */
+  }
+  

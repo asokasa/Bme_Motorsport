@@ -1,0 +1,140 @@
+.container {
+    
+    padding-block:  10%;
+    max-width: 100%;
+    margin: 0 auto;
+    text-align: center;
+    font-family: Arial, sans-serif;
+    
+
+  }
+  
+  .heading {
+    font-size: 300%;
+    margin-bottom: 20px;
+  }
+  
+.inputs{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.nevek{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+  .form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .input {
+    margin-top: 3vw;
+    font-size: 16px;
+    border-radius: 5px;
+    border: none;
+    
+    width: 20vw;
+    height: 4.5vw;
+    margin-inline: 5%;
+  }
+
+
+  .input_email{
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    margin-top: 3vw;
+    border: none;
+    width: 30vw;
+    height: 4.5vw;
+    margin-inline: 5%;
+    
+  }
+  
+  .button {
+    width: 270px;
+    height: 80px;
+    border: none;
+    outline: none;
+    background: #000000;
+    color: #fff;
+    font-size: 22px;
+    border-radius: 40px;
+    text-align: center;
+    box-shadow: 0 6px 20px -5px rgba(0, 0, 0, 0.4);
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #00aba2;
+    box-shadow: 0 0 10px #00aba2, /* Inner glow */
+  0 0 20px #00aba2, /* Mid glow */
+  0 0 30px #00aba2; /* Outer glow */
+  margin-block: 2vw;
+  }
+  
+  .buttonText {
+    margin: 0;
+  }
+  
+  .checkBox {
+    width: 80px;
+    height: 80px;
+    border-radius: 40px;
+    box-shadow: 0 0 12px -2px rgba(0, 0, 0, 0);
+    position: absolute;
+    top: 0;
+    right: -40px;
+    opacity: 0;
+  }
+  
+  .checkBox svg {
+    width: 40px;
+    margin: 20px;
+  }
+  
+  svg path {
+    stroke-width: 3;
+    stroke: #fff;
+    stroke-dasharray: 34;
+    stroke-dashoffset: 34;
+    stroke-linecap: round;
+  }
+  
+  .active {
+    background: #01bc8d;
+    transition: 1s;
+  }
+  
+  .active .checkBox {
+    right: 0;
+    opacity: 1;
+    transition: 1s;
+  }
+  
+  .active p {
+    margin-right: 125px;
+    transition: 1s;
+  }
+  
+  .active svg path {
+    stroke-dashoffset: 0;
+    transition: 1s;
+    transition-delay: 1s;
+  }
+  
+  .message {
+    margin-top: 15px;
+    font-size: 16px;
+    color: #61a728;
+  }
+  

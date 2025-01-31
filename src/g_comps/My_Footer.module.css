@@ -1,0 +1,58 @@
+.foot{
+    background-color: #000000;
+    min-height: 15vw;
+    width: 100%;
+    display: flex;
+    padding-top: 4vw;
+    
+    align-items: center;
+    flex-direction: column;
+}
+
+
+.sponsor_container img{
+    width: 5vw;
+}
+
+
+.sponsor_container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+
+.footer_neon_line {
+    width: 90%; /* Adjust width as needed */
+    height: 2px; /* Adjust thickness */
+    background-color: #00dfd4e6; /* Base neon color */
+    box-shadow:
+        0 0 2px 2px rgba(0, 255, 242, 0.5), /* Subtle inner white */
+        0 0 6px 4px rgba(0, 171, 162, 0.4), /* Softer middle magenta */
+        0 0 12px 8px rgba(0, 171, 162, 0.3); /* Fainter outer cyan */
+
+    border-radius: 5px; /* Optional: rounded edges */
+    margin-bottom: 2vw;
+}
+
+
+
+.footer_sponsor_container{
+    display: flex;
+
+}
+
+
+.footer_sponsor_container img{
+    max-width: 11vw;
+    max-height: 5vw;
+    padding: 1vw;
+}
+
+
+.foot span{
+    color: #00ABA2;
+}
+
+

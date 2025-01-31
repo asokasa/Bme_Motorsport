@@ -1,4 +1,242 @@
 .homePage {
-    background-color: lightblue;
-    height: 100vh; /* Full screen height */
+    
+    height: 200vh; /* Full screen height */
+    width: 100%;
+    
+    
+    
   }
+
+
+.homePage h2, h3, h4, h5{
+  color: white;
+}
+
+
+.main_page_content{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+
+}
+
+
+
+.banner_pic {
+  position: fixed; 
+  top: 0; 
+  left: 0; 
+  width: 100%;
+  height: 100vh;
+  z-index: -1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.banner_pic img {
+    width: 100%; /* Makes the image span the full width */
+    height: 100%; /* Scales the image to fill the div */
+    object-fit: cover; /* Maintains aspect ratio while covering the div */
+    
+    
+}
+
+
+
+.home_1{
+  margin-top: 150vh;
+  height: 135vh;
+  background: linear-gradient(rgba(0, 0, 0, 0.498), #00aba384);
+  backdrop-filter: blur(20px);
+  width: 100%;
+}
+
+.home_1 h2{
+  color: white;
+  padding-top: 5vw;
+  font-size: 400%;
+}
+
+
+
+.home_2{
+  background-color: black;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+}
+
+
+
+.home2_pic{
+  width: 50%;
+  margin-left: auto;
+}
+
+.home2_pic img{
+  width: 100%;
+}
+
+
+
+.home2_szoveg{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  width: 50%;
+}
+
+
+
+.home2_szoveg h3{
+  font-size: 350%;
+  color: white;
+}
+
+
+
+.home2_szoveg a{
+  text-decoration: none;
+  color: white;
+  height: 3.5vw;
+  width: 14vw;
+  text-align: center;
+  text-justify: distribute;
+  border-radius: 2vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+}
+
+
+
+.home2_szoveg a{
+  margin-top: 3vw;
+}
+
+
+.fs_button{
+  background-color: rgba(0, 0, 0, 0.676);
+  height: 2vw;
+  
+  border-width: 3px;
+  border-color: #b8f03f;
+  border-style: solid;
+  
+  
+
+  transition: background-color 0.4s ease, 
+              color 0.4s ease, 
+              box-shadow 0.4s ease,
+              font-size 0.4s ease;
+
+}
+
+.fs_button:hover{
+  background-color: #b8f03f;
+  color: black;
+  box-shadow: 0 0 10px #b8f03f, /* Inner glow */
+  0 0 20px #b8f03f; /* Mid glow */
+  font-size: 105%;
+
+}
+
+
+
+
+
+.support_button{
+  background-color: rgba(0, 0, 0, 0.676);
+  height: 2vw;
+  
+  border-width: 3px;
+  border-color: #b8f03f;
+  border-style: solid;
+  
+  margin-bottom : 2vw;
+
+  transition: background-color 0.8s ease, 
+              color 0.8s ease, 
+              box-shadow 0.8s ease,
+              font-size 0.4s ease;
+
+}
+
+.support_button:hover{
+  background-color: #b8f03f;
+  color: black;
+  box-shadow: 0 0 10px #b8f03f, /* Inner glow */
+  0 0 20px #b8f03f, /* Mid glow */
+  0 0 30px #b8f03f; /* Outer glow */
+  font-size: 105%;
+
+}
+
+
+
+
+
+.home3 {
+  display: flex; /* Flexbox layout */
+  height: 100vh; /* Full viewport height (or adjust based on your design) */
+  width: 100%;
+}
+
+.home_3_pic1, .home_3_pic2 {
+  flex: 0 0 30%; /* Set the width to 30% for the picture divs */
+  height: 100%; /* Make the height of the divs the same */
+  background-color: #00ABA2; /* Example background, replace with your image or content */
+}
+
+.home_3_text {
+  flex: 0 0 40%; /* Set the width to 40% for the middle text div */
+  height: 100%; /* Make the height of the divs the same */
+  background-color: #000000; /* Example background */
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Center text horizontally */
+  align-items: center; /* Center text vertically */
+  padding: 20px; /* Optional padding */
+}
+
+
+.home_3_text h2{
+  font-size: 300%;
+}
+
+.home_3_text p{
+  margin-inline: 17%;
+  line-height: 1.5vw;
+}
+
+.home_3_text a{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  color: white;
+  border-radius: 2vw;
+  border-width: 3px;
+  border-style: solid;
+  height: 3vw;
+  width: 20vw;
+  margin-top: 5vw;
+  border-color: #b8f03f;
+}
+
+
+.home_4{
+  width: 100%;
+  background-color: #000000;
+}
+
+
+
