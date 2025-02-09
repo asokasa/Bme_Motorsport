@@ -69,7 +69,7 @@ const SignUpForm = () => {
                     className={`${styles.button} ${isButtonActive ? styles.active : ""}`}
                 >
                     <p id="btnText" className={styles.buttonText}>
-                        {isButtonActive ? "Siker" : "Feliratkozás"}
+                        {isButtonActive ? "Feliratkozva" : "Feliratkozás"}
                     </p>
                     <div className={styles.checkBox}>
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">

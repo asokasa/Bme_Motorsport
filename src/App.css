@@ -11,19 +11,22 @@
 
 
 *{
-  margin: 0;
-  padding: 0;
+  
   overflow-y: scroll; /* Ensure it's scrollable */
   scrollbar-width: none; /* Firefox */
+  
 }
+
+
 
 .app-layout {
   width: 100%;
-  overflow-x: hidden; /* Prevents any overflow */
+  
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   height: 100%;
+  
   
 }
 
@@ -32,8 +35,8 @@
 
 .content-area{
   width: 100%;
-  margin-top: -3%;
-  height: 110vh;
+  
+  height: 100%;
 }
 
 
@@ -54,18 +57,7 @@ p, a{
 
 
 
-.blur-line{
-  height: 70px;
-  width: 100%;
-  position: fixed;
-  top: 0;
-  left: 0;
-  background-color: rgba(0, 170, 159, 0.5);
-  backdrop-filter: blur(10px); /* Applies the blur effect */
-  -webkit-backdrop-filter: blur(10px); /* For Safari compatibility */
-  z-index: 4;
 
-}
 
 
 

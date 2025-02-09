@@ -15,10 +15,8 @@ import './App.css';
 function App() {
   return (
     <Router>
-      <div className="app-layout">ű
-        <div className="blur-line">
-          
-        </div>
+      <div className="app-layout">
+
         <Header />
         <main className="content-area">
 

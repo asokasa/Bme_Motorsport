@@ -11,7 +11,11 @@ const HomePage = () => {
       <div className={styles.banner_pic}>
         <img src="/assets/main_bg.jpg" alt="" />
       </div>
+
+
+
       <div className={styles.main_page_content}>
+        
         <div className={styles.home_1}>
           <h2>Legfrissebb híreink</h2>
           <My_carousel />
