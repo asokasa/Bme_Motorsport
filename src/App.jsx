@@ -19,6 +19,7 @@ import './App.css';
 function App() {
   return (
     <Router>
+      
       <div className="app-layout">
 
         <Navbar />
@@ -44,6 +45,7 @@ function App() {
         <Footer />
 
       </div>
+      <div className="black"></div>
     </Router>
   );
 }

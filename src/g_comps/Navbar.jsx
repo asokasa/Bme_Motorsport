@@ -12,23 +12,21 @@ const Navbar = () => {
       const currentScrollY = window.scrollY;
 
       if (currentScrollY < lastScrollY) {
-        // Scrolling up → show navbar
-        setShow(true);
+        setShow(true); // Show navbar when scrolling up
       } else {
-        // Scrolling down → hide navbar
-        setShow(false);
+        setShow(false); // Hide navbar when scrolling down
       }
 
-      setLastScrollY(currentScrollY); // Update last scroll position
+      setLastScrollY(currentScrollY);
     };
 
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
-  }, [lastScrollY]); // Depend on lastScrollY so it updates correctly
+  }, [lastScrollY]);
 
   return (
     <>
-      {/* Sidebar - Now opens from the right */}
+      {/* Sidebar - Opens from the right */}
       <div className={`sidebar ${sidebarOpen ? 'sidebar--open' : ''}`}>
         <button className="close-btn" onClick={() => setSidebarOpen(false)}>✖</button>
         <NavLink to="/" onClick={() => setSidebarOpen(false)}>Home</NavLink>
@@ -40,19 +38,20 @@ const Navbar = () => {
         <NavLink to="/kapcsolatok" onClick={() => setSidebarOpen(false)}>Kapcsolatok</NavLink>
       </div>
 
-      {/* Navbar - Reappears on scroll up */}
+      {/* Navbar */}
       <header className={`navbar ${show ? 'navbar--visible' : 'navbar--hidden'}`}>
         <div className="navbar__content">
-          {/* Sidebar Toggle Button - Now on the right */}
-          <button className="sidebar-toggle" onClick={() => setSidebarOpen(!sidebarOpen)}>
-            ☰
-          </button>
-
-          <div className="navbar__center">
+          {/* Move Logo to the Left */}
+          <div className="navbar__left">
             <Link to="/">
               <img src="/assets/Feher_logo__nagy.png" alt="logo" className="navbar__logo" />
             </Link>
           </div>
+
+          {/* Sidebar Toggle Button - Stays on the Right */}
+          <button className="sidebar-toggle" onClick={() => setSidebarOpen(!sidebarOpen)}>
+            ☰
+          </button>
         </div>
       </header>
     </>

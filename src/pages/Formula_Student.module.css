@@ -1,9 +1,11 @@
 .formula_student {
-    width: 100%;
+    width: 100vw;
     min-height: 100vh; /* Ensure it spans the full viewport */
     display: flex;
     flex-direction: column;
     justify-content: space-between; /* Pushes content up, keeps footer at bottom */
+    background-color: black;
+    overflow-x: hidden;
   }
 
 
