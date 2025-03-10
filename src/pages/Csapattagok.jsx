@@ -1,90 +1,98 @@
 import React from 'react';
 import styles from './Csapattagok.module.css';
-import Member_Cards from '../g_comps/Member_Cards';
-import Tagok_List from '../Tagok_List.json';
-import videoSrc from '/assets/logo_anim.mp4';
-import Footer from '../g_comps/My_Footer';
+import { useEffect, useMemo, useState } from "react";
+import Particles, { initParticlesEngine } from "@tsparticles/react";
+import { loadSlim } from "@tsparticles/slim";
 
 const Csapattagok = () => {
-    // Categorize cards based on the second section (keyword)
-    const categorizedCards = Tagok_List.reduce((categories, { originalName, sections }) => {
-        const keyword = sections[1].toLowerCase(); // Use the second section as the category
-        const card = (
-            <Member_Cards
-                key={originalName}
-                fileName={originalName}
-                title={`${sections[0]}`} // Combine first and second sections
-                description={sections[2]} // Third section
-            />
-        );
+  const [init, setInit] = useState(false);
 
-        if (!categories[keyword]) {
-            categories[keyword] = []; // Initialize category array if not present
-        }
-        categories[keyword].push(card);
-        return categories;
-    }, {});
+  useEffect(() => {
+    initParticlesEngine(async (engine) => {
+      await loadSlim(engine);
+    }).then(() => {
+      setInit(true);
+    });
+  }, []);
 
-    return (
-        <div className={styles.csapattagok}>
-            <div className={styles.bg_img}>
-                <video autoplay muted loop>
-                    <source src={videoSrc} type="video/mp4" />
-                </video>
-            </div>
+  const particlesLoaded = (container) => {
+    console.log(container);
+  };
 
-            <h1>Csapattagok</h1>
+  const options = useMemo(
+    () => ({
+      background: {
+        color: {
+          value: "#000000",
+        },
+      },
+      fpsLimit: 60,
+      interactivity: {
+        events: {
+          onClick: {
+            enable: true,
+            mode: "push",
+          },
+          onHover: {
+            enable: true,
+            mode: "repulse",
+          },
+        },
+        modes: {
+          push: {
+            quantity: 4,
+          },
+          repulse: {
+            distance: 200,
+            duration: 0.4,
+          },
+        },
+      },
+      particles: {
+        color: { value: "#00aba2" },
+        links: {
+          color: "#00aba2",
+          distance: 150,
+          enable: true,
+          opacity: 1,
+          width: 2,
+        },
+        move: {
+          direction: "none",
+          enable: true,
+          outModes: { default: "bounce" },
+          random: false,
+          speed: 2,
+          straight: false,
+        },
+        number: { density: { enable: true }, value: 180 },
+        opacity: { value: 0.8 },
+        shape: { type: "circle" },
+        size: { value: { min: 1, max: 4 } },
+      },
+      detectRetina: true,
+    }),
+    []
+  );
 
-            
+  if (!init) return null;
 
-            <h2>Vezetők</h2>
-            <div id='vezeto' className={styles.card_container}>
-                {categorizedCards['vezeto'] || <p>Nincs vezető a listában.</p>}
-            </div>
-
-            <h2>Motorvezérlés csoport</h2>
-            <div id='motor' className={styles.card_container}>
-                {categorizedCards['motor'] || <p>Nincs tag a Motorvezérlés csoportban.</p>}
-            </div>
-            <h2>Mechanika csoport</h2>
-            <div id='mechanika' className={styles.card_container}>
-                {categorizedCards['mechanika'] || <p>Nincs tag a Mechanika csoportban.</p>}
-            </div>
-
-            <h2>Hybrid csoport</h2>
-            <div id='hybrid' className={styles.card_container}>
-                {categorizedCards['hybrid'] || <p>Nincs tag a Mechanika csoportban.</p>}
-            </div>
-
-            <h2>Mechanika csoport</h2>
-            <div id='elektronika' className={styles.card_container}>
-                {categorizedCards['elektronika'] || <p>Nincs tag a Mechanika csoportban.</p>}
-            </div>
-
-            <h2>Mechanika csoport</h2>
-            <div id='futomu' className={styles.card_container}>
-                {categorizedCards['futomu'] || <p>Nincs tag a Mechanika csoportban.</p>}
-            </div>
-
-            <h2>Kompozit csoport</h2>
-            <div id='kompozit' className={styles.card_container}>
-                {categorizedCards['kompozit'] || <p>Nincs tag a Kompozit csoportban.</p>}
-            </div>
-            <h2>Kompozit csoport</h2>
-            <div id='marketing' className={styles.card_container}>
-                {categorizedCards['marketing'] || <p>Nincs tag a Marketing csoportban.</p>}
-            </div>
-            <h2>Kompozit csoport</h2>
-            <div id='penzugy' className={styles.card_container}>
-                {categorizedCards['penzugy'] || <p>Nincs tag a Pénzügy csoportban.</p>}
-            </div>
-
-
-            <Footer />
-        </div>
-
-        
-    )
+  return (
+    <div style={{ position: "relative", width: "100vw", height: "100vh" }}>
+      <Particles id="tsparticles" particlesLoaded={particlesLoaded} options={options} />
+      <div style={{
+        position: "absolute",
+        top: "50%",
+        left: "50%",
+        transform: "translate(-50%, -50%)",
+        color: "white",
+        textAlign: "center",
+      }}>
+        <h1>Welcome to Particles Page</h1>
+      </div>
+    </div>
+  );
 };
 
 export default Csapattagok;
+

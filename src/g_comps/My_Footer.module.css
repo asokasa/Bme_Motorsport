@@ -1,13 +1,14 @@
-.foot{
+.foot {
     background-color: #000000;
     min-height: 15vw;
     width: 100%;
     display: flex;
-    padding-top: 4vw;
-    
+    padding-top: 2vw; /* Reduced padding */
     align-items: center;
     flex-direction: column;
-}
+    z-index: 100;
+  }
+  
 
 
 .sponsor_container img{

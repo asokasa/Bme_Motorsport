@@ -37,26 +37,41 @@
   
   .input {
     margin-top: 3vw;
-    font-size: 16px;
-    border-radius: 5px;
+    font-size: 20px;
+    border-radius: 15px;
     border: none;
-    
+    background-color: #242424;
     width: 20vw;
     height: 4.5vw;
     margin-inline: 5%;
+    text-align: center;
+    padding: 0vw;
+    color: white;
+    margin-bottom: 2%;
   }
+
+  
+.input::placeholder,
+.input_email::placeholder {
+    text-align: center;
+    color: white;
+    background-color: #242424;
+}
 
 
   .input_email{
     padding: 10px;
-    font-size: 16px;
-    border-radius: 5px;
+    font-size: 20px;
+    border-radius: 15px;
     margin-top: 3vw;
     border: none;
     width: 30vw;
     height: 4.5vw;
     margin-inline: 5%;
-    
+    background-color: #242424;
+    text-align: center;
+    padding: 0;
+    color: white;
   }
   
   .button {

@@ -268,7 +268,7 @@ const Tamogatoink = () => {
 
 
 
-        <Footer/>
+        
         </div>
     );
 };

@@ -1,42 +1,62 @@
-.header{
+/* Fixed, auto-hiding navbar */
+.navbar {
     position: fixed;
     top: 0;
     width: 100%;
-    z-index: 5;
-    margin: 0;
-    padding: 0;
-    
-    
-    height: 70px;
-    
-    overflow: hidden;
-    
+    background: #00ABA2;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+    z-index: 1000;
+  }
   
-    
-}
-
-.header img{
-    height: 140px;
-    transition: transform 0.2s ease;
-    margin-top: -2.8vw;
-    margin-bottom: -2.2vw;
-    margin-left: 1vw;
-    
-
-    
-}
-
-.header img:hover{
-    
-    transform: scale(1.1);
-    
-}
-
-
-
-
-
-
-
-
-
+  .navbar--visible {
+    transform: translateY(0);
+  }
+  
+  .navbar--hidden {
+    transform: translateY(-100%);
+  }
+  
+  /* Flex container for three sections */
+  .navbar__content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  /* Left and right nav sections share flex:1 for balance */
+  .navbar__left,
+  .navbar__right {
+    display: flex;
+    gap: 1rem;
+    flex: 1;
+  }
+  
+  /* Center section with logo (does not stretch) */
+  .navbar__center {
+    flex: 0;
+    text-align: center;
+  }
+  
+  /* Logo size adjustment */
+  .navbar__logo {
+    height: 50px; /* Adjust as needed */
+  }
+  
+  /* Link styling */
+  .navbar__left a,
+  .navbar__right a {
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+  }
+  
+  /* Active link style */
+  .navbar__left a.active,
+  .navbar__right a.active {
+    color: #007bff;
+  }
+  

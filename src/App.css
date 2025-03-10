@@ -12,7 +12,7 @@
 
 *{
   
-  overflow-y: scroll; /* Ensure it's scrollable */
+  
   scrollbar-width: none; /* Firefox */
   
 }
@@ -20,24 +20,15 @@
 
 
 .app-layout {
-  width: 100%;
-  
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  height: 100%;
-  
-  
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Ensures it fills the full viewport */
 }
 
-
-
-
-.content-area{
-  width: 100%;
-  
-  height: 100%;
+.content-area {
+  flex-grow: 1; /* Allows content to expand properly and push the footer down */
 }
+
 
 
 h1, h2, h3{

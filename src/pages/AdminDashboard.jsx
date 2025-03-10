@@ -1,0 +1,159 @@
+import styles from './AdminDashboard.module.css';
+import { useState, useEffect } from "react";
+
+const AdminDashboard = () => {
+  const [category, setCategory] = useState("sponsors");
+  const [data, setData] = useState([]);
+  const [image, setImage] = useState(null);
+  const [textFile, setTextFile] = useState(null);
+  const [formData, setFormData] = useState({
+    link: "", name: "", description: "", type: "", title: "", date: ""
+  });
+
+  useEffect(() => {
+    fetch(`http://localhost:5000/data/${category}`)
+      .then(res => res.json())
+      .then(setData);
+  }, [category]);
+
+  const handleFileChange = (e) => {
+    if (e.target.name === "image") setImage(e.target.files[0]);
+    if (e.target.name === "textFile") setTextFile(e.target.files[0]);
+  };
+
+  const handleDelete = async (id, imagePath) => {
+    if (!window.confirm("Are you sure you want to delete this?")) return;
+
+    try {
+      const response = await fetch(`http://localhost:5000/delete/${category}/${id}`, {
+        method: "DELETE",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ imagePath })
+      });
+
+      if (response.ok) {
+        setData(prevData => prevData.filter(entry => entry.id !== id));
+        alert("Entry deleted successfully!");
+      } else {
+        alert("Failed to delete entry.");
+      }
+    } catch (error) {
+      console.error("Delete error:", error);
+      alert("An error occurred while deleting.");
+    }
+  }
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const data = new FormData();
+    data.append("category", category);
+    if (image) data.append("image", image);
+    if (textFile) data.append("textFile", textFile);
+    Object.keys(formData).forEach(key => data.append(key, formData[key]));
+
+    try {
+      const response = await fetch("http://localhost:5000/upload", {
+        method: "POST",
+        body: data
+      });
+      const result = await response.json();
+      if (result.success) {
+        alert("Upload successful!");
+        setFormData({ link: "", name: "", description: "", type: "", title: "", date: "" });
+        setImage(null);
+        setTextFile(null);
+      } else {
+        alert("Upload failed: " + result.error);
+      }
+    } catch (error) {
+      alert("Upload error occurred.");
+    }
+  };
+
+  return (
+    <div className={styles.up_form}>
+      <h2>Admin Dashboard</h2>
+
+      {/* Upload Type Selector */}
+      <label>Select Upload Type:</label>
+      <select onChange={(e) => setCategory(e.target.value)}>
+        <option value="sponsors">Sponsors</option>
+        <option value="teamMembers">Team Members</option>
+        <option value="alumni">Alumni</option>
+        <option value="blogPosts">Blog Posts</option>
+      </select>
+
+      {/* Upload Forms - Only one visible at a time */}
+      {category === "sponsors" && (
+        <form onSubmit={handleSubmit}>
+          <input type="file" name="image" accept="image/*" onChange={handleFileChange} required />
+          <input type="text" name="link" placeholder="Sponsor Link" onChange={handleChange} required />
+          <select name="type" onChange={handleChange} required>
+            <option value="diamond">Diamond</option>
+            <option value="gold">Gold</option>
+            <option value="silver">Silver</option>
+            <option value="bronz">Bronze</option>
+            <option value="uni">University</option>
+            <option value="other">Other</option>
+          </select>
+          <button type="submit">Upload Sponsor</button>
+        </form>
+      )}
+
+      {category === "teamMembers" && (
+        <form onSubmit={handleSubmit}>
+          <input type="file" name="image" accept="image/*" onChange={handleFileChange} required />
+          <input type="text" name="name" placeholder="Name" onChange={handleChange} required />
+          <textarea name="description" placeholder="Description" onChange={handleChange} required />
+          <select name="type" onChange={handleChange} required>
+            <option value="lead">Leader</option>
+            <option value="engine">Engine</option>
+            <option value="mech">Mechanics</option>
+            <option value="komp">Composites</option>
+            <option value="hybrid">Hybrid</option>
+            <option value="elektro">Electrical</option>
+            <option value="Marketing">Marketing</option>
+            <option value="money">Finance</option>
+          </select>
+          <button type="submit">Upload Team Member</button>
+        </form>
+      )}
+
+      {category === "alumni" && (
+        <form onSubmit={handleSubmit}>
+          <input type="file" name="image" accept="image/*" onChange={handleFileChange} required />
+          <input type="text" name="name" placeholder="Name" onChange={handleChange} required />
+          <button type="submit">Upload Alumni</button>
+        </form>
+      )}
+
+      {category === "blogPosts" && (
+        <form onSubmit={handleSubmit}>
+          <input type="text" name="title" placeholder="Blog Title" onChange={handleChange} required />
+          <input type="date" name="date" onChange={handleChange} required />
+          <input type="file" name="image" accept="image/*" onChange={handleFileChange} required />
+          <input type="file" name="textFile" accept=".txt" onChange={handleFileChange} required />
+          <button type="submit">Upload Blog Post</button>
+        </form>
+      )}
+
+      {/* Display Section - Independent Selector */}
+      <h3>Existing {category}:</h3>
+      <ul>
+        {data.map(entry => (
+          <li key={entry.id}>
+            {entry.path && <img src={entry.path} alt={entry.name || "No Image"} width="50" />}
+            <strong>{entry.name || entry.title}</strong>
+            <button onClick={() => handleDelete(entry.id, entry.path)}>Delete</button>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+};
+
+export default AdminDashboard;

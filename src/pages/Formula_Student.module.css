@@ -1,34 +1,22 @@
-.formula_student{
-    margin:0;
-    padding: 0;
-    box-sizing: border-box;
+.formula_student {
     width: 100%;
-    position: relative;
-
-    background-color: black;
-    min-height: 100vh;
-
-
+    min-height: 100vh; /* Ensure it spans the full viewport */
     display: flex;
-    align-items: center;
-    justify-content: center;
     flex-direction: column;
-
-    
-}
-
+    justify-content: space-between; /* Pushes content up, keeps footer at bottom */
+  }
 
 
 .formula_student h2{
-    color: black;
+    color: rgb(255, 255, 255);
     font-size: 300%;
-    margin-left: 15%;
+    
     margin-bottom: 1%;
 }
 
 
 .formula_student p{
-    color: black;
+    color: rgb(255, 255, 255);
     font-size: 130%;
     text-align: justify;
     width: 70%;
@@ -39,14 +27,15 @@
 
 
 .elso_feher h3{
-    margin-left: 15%;
+    
     font-size: 180%;
     margin-bottom: 4%;
+    color: rgb(255, 255, 255);
 }
 
 
 .elso_feher{
-    background-color: white;
+    background-color: rgb(0, 0, 0);
     display: flex;
 
     width: 100%;
@@ -63,7 +52,7 @@
 }
 
 .masodik{
-    background-color: white;
+    background-color: rgb(0, 0, 0);
     margin-top: -10%;
     display: flex;
     justify-content: center;

@@ -53,7 +53,7 @@ const HomePage = () => {
         <SignUpForm />
       </div>
 
-      <Footer />
+      
     </div>
   )
 };
