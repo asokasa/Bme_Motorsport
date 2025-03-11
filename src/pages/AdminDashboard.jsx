@@ -160,7 +160,7 @@ const AdminDashboard = () => {
           <input type="text" name="name" placeholder="Name" onChange={handleChange} required />
           <textarea name="description" placeholder="Description" onChange={handleChange} required />
           <select name="type" onChange={handleChange} required>
-            <option value="vezető">Vezető</option>
+            <option value="vezetők">Vezetők</option>
             <option value="motorvezérlés csoport">Motorvezérlés csoport</option>
             <option value="mechanika csoport">Mechanika csoport</option>
             <option value="kompozit csoport">Kompozit csoport</option>
