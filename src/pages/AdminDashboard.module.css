@@ -1,40 +1,56 @@
+/* Ensure the whole page adapts to content length */
+.dashboard_wrap {
+    position: relative;
+    width: 100vw;
+    min-height: 100vh; /* Allows the page to expand */
+    background-color: black;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* Keeps content from shifting up */
+    padding-bottom: 50px; /* Adds spacing at the bottom */
+}
 
+/* Adjust up_form positioning */
 .up_form {
+    margin-block: 2rem;
     width: 60vw;
     height: auto;
     display: flex;
     flex-direction: column;
     align-items: center;
-    
-    background-color: #00aba32d;
+    background-color: rgba(0, 171, 162, 0.2);
     padding: 20px;
     border-radius: 10px;
     color: white;
     
-    position: absolute;
-    top: 300px;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    transform: none; /* Removed forced transformation */
     z-index: 10;
     backdrop-filter: blur(8px);
 }
 
-.up_form form{
+/* Ensure forms stack naturally */
+.up_form form {
     margin-top: 3rem;
     display: flex;
     flex-direction: column;
-    
 }
 
-
-
-
-
-
-
-
-ul{
+/* Display entries correctly without overflow */
+ul {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    justify-content: center;
+    padding: 20px;
+    gap: 10px;
+}
+
+/* Prevents page from cutting off content */
+#tsparticles {
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    z-index: -2;
+    top: 0;
+    left: 0;
 }

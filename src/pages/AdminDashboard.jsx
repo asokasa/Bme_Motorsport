@@ -123,7 +123,7 @@ const AdminDashboard = () => {
 
   return (
 
-    <div style={{ position: "relative", width: "100vw", height: "100vh" }}>
+    <div style={{ position: "relative", width: "100vw", minHeight: "100vh", display: "flex", justifyContent: "center" }}>
       <Particles id="tsparticles" particlesLoaded={particlesLoaded} options={options} />
     <div className={styles.up_form}>
       <h2>Admin Dashboard</h2>

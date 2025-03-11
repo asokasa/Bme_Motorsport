@@ -110,5 +110,257 @@
     "name": "Pinczés Ádám",
     "description": "Pénzügy",
     "type": "pénzügy"
+  },
+  {
+    "id": 1741690377284,
+    "path": "src\\assets\\teamMembers\\1741690377240.webp",
+    "name": "Belkovics Dóra",
+    "description": "Aktív alumnus, kalibráció",
+    "type": "motorvezérlés csoport"
+  },
+  {
+    "id": 1741690414998,
+    "path": "src\\assets\\teamMembers\\1741690414956.webp",
+    "name": "Biriszló Gábor",
+    "description": "Motorblokk felfogatás",
+    "type": "motorvezérlés csoport"
+  },
+  {
+    "id": 1741690456753,
+    "path": "src\\assets\\teamMembers\\1741690456702.webp",
+    "name": "Dávid Bulcsú",
+    "description": "Szárazkarteres olajrendszer",
+    "type": "motorvezérlés csoport"
+  },
+  {
+    "id": 1741690507022,
+    "path": "src\\assets\\teamMembers\\1741690506982.webp",
+    "name": "Fekete András",
+    "description": "Kipufogórendszer",
+    "type": "motorvezérlés csoport"
+  },
+  {
+    "id": 1741690557019,
+    "path": "src\\assets\\teamMembers\\1741690556970.webp",
+    "name": "Ispán Martin Zsolt",
+    "description": "Sebességváltó",
+    "type": "motorvezérlés csoport"
+  },
+  {
+    "id": 1741690608867,
+    "path": "src\\assets\\teamMembers\\1741690608862.webp",
+    "name": "Nemesrévi Ákos",
+    "description": "Üzemanyagrendszer",
+    "type": "motorvezérlés csoport"
+  },
+  {
+    "id": 1741690646191,
+    "path": "src\\assets\\teamMembers\\1741690646171.webp",
+    "name": "Szabó Bence",
+    "description": "Tervező",
+    "type": "motorvezérlés csoport"
+  },
+  {
+    "id": 1741691154463,
+    "path": "src\\assets\\teamMembers\\1741691154408.webp",
+    "name": "Farkas Ádám",
+    "description": "Beszerzés",
+    "type": "mechanika csoport"
+  },
+  {
+    "id": 1741691261277,
+    "path": "src\\assets\\teamMembers\\1741691261221.webp",
+    "name": "Márkót Nándor",
+    "description": "Tervező",
+    "type": "mechanika csoport"
+  },
+  {
+    "id": 1741691308985,
+    "path": "src\\assets\\teamMembers\\1741691308977.webp",
+    "name": "Máté Szabolcs",
+    "description": "Hátsó rugózás",
+    "type": "mechanika csoport"
+  },
+  {
+    "id": 1741691408763,
+    "path": "src\\assets\\teamMembers\\1741691408751.webp",
+    "name": "Préda Róbert",
+    "description": "Beszerzés, kormánymű",
+    "type": "mechanika csoport"
+  },
+  {
+    "id": 1741691467959,
+    "path": "src\\assets\\teamMembers\\1741691467948.webp",
+    "name": "Szendrei György",
+    "description": "Tervező",
+    "type": "mechanika csoport"
+  },
+  {
+    "id": 1741691507608,
+    "path": "src\\assets\\teamMembers\\1741691507552.webp",
+    "name": "Szoboszlai Szilveszter",
+    "description": "Pedalbox, fékrendszer",
+    "type": "mechanika csoport"
+  },
+  {
+    "id": 1741691554406,
+    "path": "src\\assets\\teamMembers\\1741691554391.webp",
+    "name": "Tóth Balázs",
+    "description": "Differenciálmű tartó",
+    "type": "mechanika csoport"
+  },
+  {
+    "id": 1741691595021,
+    "path": "src\\assets\\teamMembers\\1741691594967.webp",
+    "name": "Belevski Milán",
+    "description": "Pilótaülés, tűzfal",
+    "type": "kompozit csoport"
+  },
+  {
+    "id": 1741691648462,
+    "path": "src\\assets\\teamMembers\\1741691648406.webp",
+    "name": "Diószeghy Dániel Viktor",
+    "description": "Kompozit felni fejlesztés",
+    "type": "kompozit csoport"
+  },
+  {
+    "id": 1741691692277,
+    "path": "src\\assets\\teamMembers\\1741691692253.webp",
+    "name": "Magyar Bence",
+    "description": "CFD szimulációk, hűtő ductok",
+    "type": "kompozit csoport"
+  },
+  {
+    "id": 1741691729069,
+    "path": "src\\assets\\teamMembers\\1741691729060.webp",
+    "name": "Majernyik Donát",
+    "description": "Felfogatások",
+    "type": "kompozit csoport"
+  },
+  {
+    "id": 1741691769698,
+    "path": "src\\assets\\teamMembers\\1741691769657.webp",
+    "name": "Mészáros Szabolcs",
+    "description": "Tervező",
+    "type": "kompozit csoport"
+  },
+  {
+    "id": 1741691807347,
+    "path": "src\\assets\\teamMembers\\1741691807337.webp",
+    "name": "Nagy Miklós Ádám",
+    "description": "Hátsó szárny",
+    "type": "kompozit csoport"
+  },
+  {
+    "id": 1741691851721,
+    "path": "src\\assets\\teamMembers\\1741691851708.webp",
+    "name": "Oszlár Dominik",
+    "description": "Tervező",
+    "type": "kompozit csoport"
+  },
+  {
+    "id": 1741691908327,
+    "path": "src\\assets\\teamMembers\\1741691908315.webp",
+    "name": "Sáray Márton",
+    "description": "Tervező",
+    "type": "kompozit csoport"
+  },
+  {
+    "id": 1741691996853,
+    "path": "src\\assets\\teamMembers\\1741691996839.webp",
+    "name": "Zsigmond Attila",
+    "description": "Első szárny",
+    "type": "kompozit csoport"
+  },
+  {
+    "id": 1741692053581,
+    "path": "src\\assets\\teamMembers\\1741692053536.webp",
+    "name": "Kiss Szabolcs",
+    "description": "Tervező",
+    "type": "hybrid csoport"
+  },
+  {
+    "id": 1741692106508,
+    "path": "src\\assets\\teamMembers\\1741692106493.webp",
+    "name": "Nádasy Bálint Tamás",
+    "description": "Tervező",
+    "type": "hybrid csoport"
+  },
+  {
+    "id": 1741692143037,
+    "path": "src\\assets\\teamMembers\\1741692142989.webp",
+    "name": "Pintér Tamás",
+    "description": "Tervező",
+    "type": "hybrid csoport"
+  },
+  {
+    "id": 1741692172204,
+    "path": "src\\assets\\teamMembers\\1741692172193.webp",
+    "name": "Somosvári Ádám Zsolt",
+    "description": "Tervező",
+    "type": "hybrid csoport"
+  },
+  {
+    "id": 1741692251823,
+    "path": "src\\assets\\teamMembers\\1741692251788.webp",
+    "name": "Drenyovszki Tamás",
+    "description": "Kijelző",
+    "type": "elektronika csoport"
+  },
+  {
+    "id": 1741692297730,
+    "path": "src\\assets\\teamMembers\\1741692297369.webp",
+    "name": "Huszár Fernandó",
+    "description": "Tervező",
+    "type": "elektronika csoport"
+  },
+  {
+    "id": 1741692703716,
+    "path": "src\\assets\\teamMembers\\1741692703706.webp",
+    "name": "Szabó Kende",
+    "description": "Első szárny felfogatás",
+    "type": "kompozit csoport"
+  },
+  {
+    "id": 1741692785662,
+    "path": "src\\assets\\teamMembers\\1741692785649.webp",
+    "name": "Száz András",
+    "description": "Tervező",
+    "type": "hybrid csoport"
+  },
+  {
+    "id": 1741692879701,
+    "path": "src\\assets\\teamMembers\\1741692879656.webp",
+    "name": "Kósa László",
+    "description": "Tervező",
+    "type": "elektronika csoport"
+  },
+  {
+    "id": 1741693045038,
+    "path": "src\\assets\\teamMembers\\1741693045029.webp",
+    "name": "Kórik Zsombor",
+    "description": "Pneumatika",
+    "type": "elektronika csoport"
+  },
+  {
+    "id": 1741693090444,
+    "path": "src\\assets\\teamMembers\\1741693090433.webp",
+    "name": "Vadászi Viktor Ákos",
+    "description": "Tervező",
+    "type": "elektronika csoport"
+  },
+  {
+    "id": 1741693132956,
+    "path": "src\\assets\\teamMembers\\1741693132454.webp",
+    "name": "Müllner Kata",
+    "description": "Szponzoráció, Beszerzés",
+    "type": "marketing csoport"
+  },
+  {
+    "id": 1741693165647,
+    "path": "src\\assets\\teamMembers\\1741693165633.webp",
+    "name": "Szilvássy Dániel",
+    "description": "Média",
+    "type": "marketing csoport"
   }
 ]

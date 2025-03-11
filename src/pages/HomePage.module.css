@@ -48,7 +48,10 @@
 
 .home_1{
   margin-top: 100vh;
-  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
   background: linear-gradient(rgba(0, 0, 0, 0.498), #00aba384);
   backdrop-filter: blur(20px);
   width: 100%;

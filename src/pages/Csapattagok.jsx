@@ -5,6 +5,7 @@ import { loadSlim } from "@tsparticles/slim";
 
 const Csapattagok = () => {
     const [teamMembers, setTeamMembers] = useState({});
+    const [loading, setLoading] = useState(true);
     const [init, setInit] = useState(false);
 
     useEffect(() => {
@@ -14,6 +15,7 @@ const Csapattagok = () => {
             setInit(true);
         });
 
+        setLoading(true);
         fetch("http://localhost:5000/data/teamMembers")
             .then(response => response.json())
             .then(data => {
@@ -26,8 +28,12 @@ const Csapattagok = () => {
                     return groups;
                 }, {});
                 setTeamMembers(groupedMembers);
+                setLoading(false);
             })
-            .catch(error => console.error("Error fetching team members:", error));
+            .catch(error => {
+                console.error("Error fetching team members:", error);
+                setLoading(false); // Ensure loading stops even if an error occurs
+            });
     }, []);
 
     const particlesOptions = useMemo(() => ({
@@ -62,6 +68,16 @@ const Csapattagok = () => {
             {/* Particle Effect */}
             <Particles id="tsparticles" options={particlesOptions} />
 
+            {/* Show Loading Screen while data is loading */}
+            {loading ? (
+                <div className={styles.loadingScreen}>
+                    <div className={styles.loader}></div>
+                    <p>Loading...</p>
+                </div>
+            ) : (
+                <>
+                
+
             <h1 className={styles.page_title}>Csapattagok</h1>
             {Object.entries(teamMembers).map(([group, members]) => (
                 <div key={group} className={styles.teamGroup}>
@@ -77,6 +93,8 @@ const Csapattagok = () => {
                     </div>
                 </div>
             ))}
+        </>
+            )}
         </div>
     );
 };
