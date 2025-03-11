@@ -1,56 +1,51 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Carousel from 'react-bootstrap/Carousel';
+import { Link } from 'react-router-dom'; // Ensure React Router is used
 import styles from './My_carousel.module.css';
 
 const My_carousel = () => {
-  return (
-    <Carousel className={styles.carouselContainer}>
-      <Carousel.Item>
-        <div className={styles.carouselItem}>
-          <img
-            className={`d-block ${styles.carouselImage}`}
-            src="/assets/main_bg.jpg"
-            alt="First slide"
-          />
-          <p className={styles.imageAlt}>First slide</p>
-        </div>
-        <Carousel.Caption className={styles.carouselCaption}>
-          <h5>First slide label</h5>
-          <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-        </Carousel.Caption>
-      </Carousel.Item>
+    const [blogPosts, setBlogPosts] = useState([]);
 
-      <Carousel.Item>
-        <div className={styles.carouselItem}>
-          <img
-            className={`d-block ${styles.carouselImage}`}
-            src="/assets/main_bg.jpg"
-            alt="Second slide"
-          />
-          <p className={styles.imageAlt}>Second slide</p>
-        </div>
-        <Carousel.Caption className={styles.carouselCaption}>
-          <h5>Second slide label</h5>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-        </Carousel.Caption>
-      </Carousel.Item>
+    useEffect(() => {
+        fetch("http://localhost:5000/data/blogPosts")
+            .then(response => response.json())
+            .then(data => {
+                // Sort by date (latest first) and take the latest 3
+                const latestPosts = data.sort((a, b) => new Date(b.date) - new Date(a.date)).slice(0, 3);
+                setBlogPosts(latestPosts);
+            })
+            .catch(error => console.error("Error fetching blog posts:", error));
+    }, []);
 
-      <Carousel.Item>
-        <div className={styles.carouselItem}>
-          <img
-            className={`d-block ${styles.carouselImage}`}
-            src="/assets/main_bg.jpg"
-            alt="Third slide"
-          />
-          <p className={styles.imageAlt}>Third slide</p>
-        </div>
-        <Carousel.Caption className={styles.carouselCaption}>
-          <h5>Third slide label</h5>
-          <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
-        </Carousel.Caption>
-      </Carousel.Item>
-    </Carousel>
-  );
+    return (
+        <Carousel className={styles.carouselContainer}>
+            {blogPosts.length > 0 ? (
+                blogPosts.map(post => (
+                    <Carousel.Item key={post.id}>
+                        <div className={styles.carouselItem}>
+                            <div className={styles.carouselText}>
+                                <h2>{post.title}</h2>
+                                <Link to="/hirek" className={styles.carouselLink}>
+                                    Read More →
+                                </Link>
+                            </div>
+                            <div className={styles.carouselImageContainer}>
+                                <img
+                                    className={styles.carouselImage}
+                                    src={`http://localhost:5000/${post.path}`}
+                                    alt={post.title}
+                                />
+                            </div>
+                        </div>
+                    </Carousel.Item>
+                ))
+            ) : (
+                <Carousel.Item>
+                    <p className={styles.noPosts}>No recent blog posts available.</p>
+                </Carousel.Item>
+            )}
+        </Carousel>
+    );
 };
 
 export default My_carousel;

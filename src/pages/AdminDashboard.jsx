@@ -1,9 +1,14 @@
 import styles from './AdminDashboard.module.css';
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
+
+import Particles, { initParticlesEngine } from "@tsparticles/react";
+import { loadSlim } from "@tsparticles/slim";
 
 const AdminDashboard = () => {
   const [category, setCategory] = useState("sponsors");
   const [data, setData] = useState([]);
+  const [init, setInit] = useState(false);
+
   const [image, setImage] = useState(null);
   const [textFile, setTextFile] = useState(null);
   const [formData, setFormData] = useState({
@@ -74,17 +79,62 @@ const AdminDashboard = () => {
     }
   };
 
+  useEffect(() => {
+    initParticlesEngine(async (engine) => {
+      await loadSlim(engine);
+    }).then(() => {
+      setInit(true);
+    });
+  }, []);
+
+  const particlesLoaded = (container) => {
+    console.log(container);
+  };
+
+  const options = useMemo(
+    () => ({
+      background: { color: { value: "#000000" } },
+      fpsLimit: 60,
+      interactivity: {
+        events: {
+          onClick: { enable: true, mode: "push" },
+          onHover: { enable: true, mode: "repulse" },
+        },
+        modes: {
+          push: { quantity: 4 },
+          repulse: { distance: 200, duration: 0.4 },
+        },
+      },
+      particles: {
+        color: { value: "#00aba2" },
+        links: { color: "#00aba2", distance: 150, enable: true, opacity: 1, width: 2 },
+        move: { direction: "none", enable: true, outModes: { default: "bounce" }, random: false, speed: 2, straight: false },
+        number: { density: { enable: true }, value: 180 },
+        opacity: { value: 1 },
+        shape: { type: "circle" },
+        size: { value: { min: 1, max: 4 } },
+      },
+      detectRetina: true,
+    }),
+    []
+  );
+
+  if (!init) return null;
+
   return (
+
+    <div style={{ position: "relative", width: "100vw", height: "100vh" }}>
+      <Particles id="tsparticles" particlesLoaded={particlesLoaded} options={options} />
     <div className={styles.up_form}>
       <h2>Admin Dashboard</h2>
 
       {/* Upload Type Selector */}
-      <label>Select Upload Type:</label>
+      <label>Válassz kategóriát:</label>
       <select onChange={(e) => setCategory(e.target.value)}>
-        <option value="sponsors">Sponsors</option>
-        <option value="teamMembers">Team Members</option>
+        <option value="sponsors">Sponsorok</option>
+        <option value="teamMembers">Csapattagok</option>
         <option value="alumni">Alumni</option>
-        <option value="blogPosts">Blog Posts</option>
+        <option value="blogPosts">Blog Postok</option>
       </select>
 
       {/* Upload Forms - Only one visible at a time */}
@@ -93,14 +143,14 @@ const AdminDashboard = () => {
           <input type="file" name="image" accept="image/*" onChange={handleFileChange} required />
           <input type="text" name="link" placeholder="Sponsor Link" onChange={handleChange} required />
           <select name="type" onChange={handleChange} required>
-            <option value="diamond">Diamond</option>
-            <option value="gold">Gold</option>
-            <option value="silver">Silver</option>
-            <option value="bronz">Bronze</option>
-            <option value="uni">University</option>
-            <option value="other">Other</option>
+            <option value="gyémánt">Gyémánt</option>
+            <option value="arany">Arany</option>
+            <option value="ezüst">Ezüst</option>
+            <option value="bronz">Bronz</option>
+            <option value="további">További</option>
+            <option value="egyetemi">Egyetemi</option>
           </select>
-          <button type="submit">Upload Sponsor</button>
+          <button type="submit">Sponsor hozzáadása</button>
         </form>
       )}
 
@@ -110,16 +160,16 @@ const AdminDashboard = () => {
           <input type="text" name="name" placeholder="Name" onChange={handleChange} required />
           <textarea name="description" placeholder="Description" onChange={handleChange} required />
           <select name="type" onChange={handleChange} required>
-            <option value="lead">Leader</option>
-            <option value="engine">Engine</option>
-            <option value="mech">Mechanics</option>
-            <option value="komp">Composites</option>
-            <option value="hybrid">Hybrid</option>
-            <option value="elektro">Electrical</option>
-            <option value="Marketing">Marketing</option>
-            <option value="money">Finance</option>
+            <option value="vezető">Vezető</option>
+            <option value="motorvezérlés csoport">Motorvezérlés csoport</option>
+            <option value="mechanika csoport">Mechanika csoport</option>
+            <option value="kompozit csoport">Kompozit csoport</option>
+            <option value="hybrid csoport">Hybrid csoport</option>
+            <option value="elektronika csoport">Elektronika csoport</option>
+            <option value="marketing csoport">Marketing csoport</option>
+            <option value="pénzügy">Pénzügy</option>
           </select>
-          <button type="submit">Upload Team Member</button>
+          <button type="submit">Csapattag hozzáadása</button>
         </form>
       )}
 
@@ -127,7 +177,7 @@ const AdminDashboard = () => {
         <form onSubmit={handleSubmit}>
           <input type="file" name="image" accept="image/*" onChange={handleFileChange} required />
           <input type="text" name="name" placeholder="Name" onChange={handleChange} required />
-          <button type="submit">Upload Alumni</button>
+          <button type="submit">Alumni hozzáadása</button>
         </form>
       )}
 
@@ -135,9 +185,11 @@ const AdminDashboard = () => {
         <form onSubmit={handleSubmit}>
           <input type="text" name="title" placeholder="Blog Title" onChange={handleChange} required />
           <input type="date" name="date" onChange={handleChange} required />
+          <label htmlFor="">.webP</label>
           <input type="file" name="image" accept="image/*" onChange={handleFileChange} required />
+          <label htmlFor="">.txt</label>
           <input type="file" name="textFile" accept=".txt" onChange={handleFileChange} required />
-          <button type="submit">Upload Blog Post</button>
+          <button type="submit">Blog Post hozzáadása</button>
         </form>
       )}
 
@@ -146,12 +198,13 @@ const AdminDashboard = () => {
       <ul>
         {data.map(entry => (
           <li key={entry.id}>
-            {entry.path && <img src={entry.path} alt={entry.name || "No Image"} width="50" />}
+            {entry.path && <img src={entry.path} alt={entry.name || "No Image"} width="80" />}
             <strong>{entry.name || entry.title}</strong>
             <button onClick={() => handleDelete(entry.id, entry.path)}>Delete</button>
           </li>
         ))}
       </ul>
+    </div>
     </div>
   );
 };

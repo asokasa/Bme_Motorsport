@@ -1,1 +1,23 @@
-[]
+[
+  {
+    "id": 1741647322270,
+    "path": "src\\assets\\blogPosts\\1741647322264.webp",
+    "textFile": "src\\assets\\blogPosts\\1741647322265.txt",
+    "title": "FS Verseny elso",
+    "date": "2025-03-10"
+  },
+  {
+    "id": 1741647391219,
+    "path": "src\\assets\\blogPosts\\1741647391217.webp",
+    "textFile": "src\\assets\\blogPosts\\1741647391217.txt",
+    "title": "FS Verseny masodik",
+    "date": "2025-03-11"
+  },
+  {
+    "id": 1741648711007,
+    "path": "src\\assets\\blogPosts\\1741648711002.webp",
+    "textFile": "src\\assets\\blogPosts\\1741648711002.txt",
+    "title": "FS Verseny harmadik",
+    "date": "2025-03-12"
+  }
+]

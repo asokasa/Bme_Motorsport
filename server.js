@@ -167,6 +167,7 @@ app.delete("/delete/:category/:id", (req, res) => {
     res.json({ success: true, message: "Entry and associated files deleted successfully" });
 });
 
+app.use("/src/assets", express.static(path.join(__dirname, "src/assets")));
 
 
 // Start Server

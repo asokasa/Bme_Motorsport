@@ -1,1 +1,114 @@
-[]
+[
+  {
+    "id": 1741679222607,
+    "path": "src\\assets\\teamMembers\\1741679222276.webp",
+    "name": "Kiss Bálint",
+    "description": "Csapatkapitány",
+    "type": "vezető"
+  },
+  {
+    "id": 1741679277360,
+    "path": "src\\assets\\teamMembers\\1741679277345.webp",
+    "name": "Jüttner Domokos",
+    "description": "Főmérnök",
+    "type": "vezető"
+  },
+  {
+    "id": 1741679311384,
+    "path": "src\\assets\\teamMembers\\1741679311370.webp",
+    "name": "Bokor András",
+    "description": "Főszerelő",
+    "type": "vezető"
+  },
+  {
+    "id": 1741679374692,
+    "path": "src\\assets\\teamMembers\\1741679374610.webp",
+    "name": "Juhász Krisztián Márk",
+    "description": "Csoportvezető",
+    "type": "motorvezérlés csoport"
+  },
+  {
+    "id": 1741679423117,
+    "path": "src\\assets\\teamMembers\\1741679423072.webp",
+    "name": "Bajnok Bálint",
+    "description": "Tervező",
+    "type": "motorvezérlés csoport"
+  },
+  {
+    "id": 1741679469020,
+    "path": "src\\assets\\teamMembers\\1741679468956.webp",
+    "name": "Kovács Gábor",
+    "description": "Csoportvezető",
+    "type": "mechanika csoport"
+  },
+  {
+    "id": 1741679856548,
+    "path": "src\\assets\\teamMembers\\1741679856166.webp",
+    "name": "Bagdi Balázs",
+    "description": "Köridő szimulációk",
+    "type": "mechanika csoport"
+  },
+  {
+    "id": 1741679913353,
+    "path": "src\\assets\\teamMembers\\1741679913314.webp",
+    "name": "Labancz Balázs",
+    "description": "Csoportvezető",
+    "type": "kompozit csoport"
+  },
+  {
+    "id": 1741679949252,
+    "path": "src\\assets\\teamMembers\\1741679948917.webp",
+    "name": "Horváth Kornél",
+    "description": "Aerodinamikai főtervező",
+    "type": "kompozit csoport"
+  },
+  {
+    "id": 1741680004017,
+    "path": "src\\assets\\teamMembers\\1741680003977.webp",
+    "name": "Süle Soma",
+    "description": "Csoportvezető",
+    "type": "hybrid csoport"
+  },
+  {
+    "id": 1741680087589,
+    "path": "src\\assets\\teamMembers\\1741680087105.webp",
+    "name": "Donert Rináldó",
+    "description": "HCU",
+    "type": "hybrid csoport"
+  },
+  {
+    "id": 1741680164008,
+    "path": "src\\assets\\teamMembers\\1741680163950.webp",
+    "name": "Fejős Andor",
+    "description": "Csoportvezető",
+    "type": "elektronika csoport"
+  },
+  {
+    "id": 1741680222437,
+    "path": "src\\assets\\teamMembers\\1741680222349.webp",
+    "name": "Beke Bálint",
+    "description": "Beágyazott elektronika, telemetria",
+    "type": "elektronika csoport"
+  },
+  {
+    "id": 1741680267833,
+    "path": "src\\assets\\teamMembers\\1741680267576.webp",
+    "name": "Csépe Zsombor",
+    "description": "Csoportvezető",
+    "type": "marketing csoport"
+  },
+  {
+    "id": 1741680335172,
+    "path": "src\\assets\\teamMembers\\1741680334792.webp",
+    "name": "Aladics Gréta",
+    "description": "Business Plan Presentation, operatív tevékenységek",
+    "type": "marketing csoport"
+  },
+  {
+    "id": 1741680383197,
+    "path": "src\\assets\\teamMembers\\1741680383189.webp",
+    "name": "Pinczés Ádám",
+    "description": "Pénzügy",
+    "type": "pénzügy"
+  }
+]
