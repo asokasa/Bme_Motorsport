@@ -1,0 +1,23 @@
+[
+  {
+    "id": 1743282194403,
+    "path": "src\\assets\\teamMembers\\1743282194093.webp",
+    "name": "Horváth Kornél",
+    "description": "Aerodinamikai főtervező",
+    "type": "kompozit csoport"
+  },
+  {
+    "id": 1743282252355,
+    "path": "src\\assets\\teamMembers\\1743282252044.webp",
+    "name": "Kiss Bálint",
+    "description": "Csapatkapitány",
+    "type": "vezetők"
+  },
+  {
+    "id": 1743282317898,
+    "path": "src\\assets\\teamMembers\\1743282317883.webp",
+    "name": "Csépe Zsombor",
+    "description": "Csoportvezető",
+    "type": "marketing csoport"
+  }
+]
