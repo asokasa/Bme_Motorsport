@@ -90,16 +90,23 @@
   font-weight: 600;
   font-style: normal;
   margin-left: 10%;
+  transition: all 0.2s ease-in-out;
 }
 
 .sidebar a:hover {
-  color: #00aba2;
+  color: #01d1c7;
+  text-shadow:
+    0 0 5px #00aba3c2,
+    0 0 10px #009790d8,
+    0 0 15px #016b6659,
+    0 0 20px #013f3c21;
+  transition: all 0.2s ease-in-out;
 }
 
 .close-btn {
   background: none;
   border: none;
-  color: rgb(184, 0, 0) !important;
+  
   font-size: 1.5rem;
   align-self: flex-end;
   cursor: pointer;

@@ -1,0 +1,19 @@
+[
+  {
+    "id": 1743618899440,
+    "paths": [
+      "src\\assets\\galeria\\1743618899315.png",
+      "src\\assets\\galeria\\1743618899340.png",
+      "src\\assets\\galeria\\1743618899416.png"
+    ],
+    "title": "Test_1"
+  },
+  {
+    "id": 1743618924170,
+    "paths": [
+      "src\\assets\\galeria\\1743618924105.png",
+      "src\\assets\\galeria\\1743618924121.png"
+    ],
+    "title": "Test_2"
+  }
+]

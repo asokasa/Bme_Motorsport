@@ -43,6 +43,7 @@ ul {
     justify-content: center;
     padding: 20px;
     gap: 10px;
+    text-decoration: none;
 }
 
 /* Prevents page from cutting off content */
@@ -54,3 +55,56 @@ ul {
     top: 0;
     left: 0;
 }
+
+
+
+/* Buttons */
+.up_form button {
+    background-color: #00aba2;
+    color: white;
+    padding: 10px 20px;
+    margin-top: 1rem;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .up_form button:hover {
+    background-color: #00897b;
+  }
+  
+  /* Inputs */
+  .up_form input[type="text"],
+  .up_form input[type="date"],
+  .up_form input[type="file"],
+  .up_form textarea,
+  .up_form select {
+    margin-top: 10px;
+    padding: 10px;
+    border: 1px solid #00aba2;
+    border-radius: 8px;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: white;
+    width: 100%;
+  }
+  
+  /* Adjust text input colors for readability */
+  .up_form input::placeholder,
+  .up_form textarea::placeholder {
+    color: rgba(255, 255, 255, 0.6);
+  }
+  
+  /* Select box */
+  .up_form select {
+    background-color: rgba(0, 80, 76, 0.301);
+  }
+  
+  /* Labels */
+  .up_form label {
+    margin-top: 1rem;
+    font-weight: bold;
+    color: #00aba2;
+  }
+  

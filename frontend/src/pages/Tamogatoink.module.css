@@ -295,6 +295,99 @@
 }
 
 
+.others {
+  position: relative;
+  overflow: hidden;
+}
+
+.others::before {
+  content: "";
+  position: absolute;
+  top: var(--top_random_value);
+  
+  width: 150%; /* Ensures gradual entry and exit */
+  height: 8px;
+  background: linear-gradient(
+    to right,
+    transparent 30%,
+    rgb(99, 138, 74) 50%,
+    transparent 70%
+  );
+  filter: blur(4px);
+  animation: neonLight 13s linear infinite;
+  animation-delay: 0s;
+  transform: translateY(-50%);
+}
+
+
+.others::after {
+  content: "";
+  position: absolute;
+  top: var(--bottom_random_value);
+  
+  width: 150%; 
+  height: 8px;
+  background: linear-gradient(
+    to right,
+    transparent 30%,
+    rgb(98, 207, 83) 50%,
+    transparent 70%
+  );
+  filter: blur(4px);
+  animation: neonLight_reverse 13s linear infinite;
+  animation-delay: 1s;
+  transform: translateY(-50%);
+}
+
+
+
+
+
+.university {
+  position: relative;
+  overflow: hidden;
+}
+
+.university::before {
+  content: "";
+  position: absolute;
+  top: var(--top_random_value);
+  
+  width: 150%; /* Ensures gradual entry and exit */
+  height: 8px;
+  background: linear-gradient(
+    to right,
+    transparent 30%,
+    rgb(202, 33, 3) 50%,
+    transparent 70%
+  );
+  filter: blur(4px);
+  animation: neonLight 13s linear infinite;
+  animation-delay: 0s;
+  transform: translateY(-50%);
+}
+
+
+.university::after {
+  content: "";
+  position: absolute;
+  top: var(--bottom_random_value);
+  
+  width: 150%; 
+  height: 8px;
+  background: linear-gradient(
+    to right,
+    transparent 30%,
+    rgb(202, 33, 3) 50%,
+    transparent 70%
+  );
+  filter: blur(4px);
+  animation: neonLight_reverse 13s linear infinite;
+  animation-delay: 1s;
+  transform: translateY(-50%);
+}
+
+
 
 
 

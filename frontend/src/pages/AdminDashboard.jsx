@@ -56,7 +56,13 @@ const AdminDashboard = () => {
     e.preventDefault();
     const data = new FormData();
     data.append("category", category);
-    if (image) data.append("image", image);
+    if (image && category === "galeria") {
+      for (let i = 0; i < image.length; i++) {
+        data.append("image", image[i]);
+      }
+    } else if (image) {
+      data.append("image", image);
+    }
     if (textFile) data.append("textFile", textFile);
     Object.keys(formData).forEach(key => data.append(key, formData[key]));
 
@@ -135,6 +141,8 @@ const AdminDashboard = () => {
         <option value="teamMembers">Csapattagok</option>
         <option value="alumni">Alumni</option>
         <option value="blogPosts">Blog Postok</option>
+        <option value="galeria">Galéria</option>
+
       </select>
 
       {/* Upload Forms - Only one visible at a time */}
@@ -193,6 +201,28 @@ const AdminDashboard = () => {
         </form>
       )}
 
+
+{category === "galeria" && (
+  <form onSubmit={handleSubmit}>
+    <input
+      type="text"
+      name="title"
+      placeholder="Esemény címe"
+      onChange={handleChange}
+      required
+    />
+    <input
+      type="file"
+      name="image"
+      accept="image/*"
+      onChange={(e) => setImage(e.target.files)}
+      multiple
+      required
+    />
+    <button type="submit">Képek feltöltése</button>
+  </form>
+)}
+
       {/* Display Section - Independent Selector */}
       <h3>Existing {category}:</h3>
       <ul>
@@ -204,6 +234,7 @@ const AdminDashboard = () => {
           </li>
         ))}
       </ul>
+
     </div>
     </div>
   );

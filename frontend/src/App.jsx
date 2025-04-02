@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import Header from './g_comps/My_Header';
+
 import Navbar from './g_comps/Navbar';
 import Footer from './g_comps/My_Footer';
 import HomePage from './pages/HomePage';
@@ -12,6 +12,7 @@ import Galeria from './pages/Galeria';
 import Formula_Student from './pages/Formula_Student';
 import AdminDashboard from "./pages/AdminDashboard";
 import AdminLogin from "./pages/AdminLogin";
+import Alumni from "./pages/Alumni";
 
 
 import './App.css';
@@ -35,6 +36,7 @@ function App() {
             <Route path="/formula_student" element={<Formula_Student />} />
             <Route path="/super-secret-admin" element={<AdminLogin />} />
             <Route path="/admin-panel" element={<AdminDashboard />} />
+            <Route path="/alumni" element={<Alumni />} />
             
             <Route path="*" element={<h2>404 - Not Found</h2>} /> {/* Fallback*/}
           </Routes>

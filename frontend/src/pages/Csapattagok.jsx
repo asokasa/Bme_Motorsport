@@ -110,6 +110,8 @@ const Csapattagok = () => {
                     ))}
                 </>
             )}
+
+            <a className={styles.alumni_button} href="/alumni">ALUMNI</a>
         </div>
     );
 };

@@ -1,0 +1,57 @@
+.alumni_wrap {
+    position: relative;
+    width: 100vw;
+    min-height: 100vh;
+    background-color: #000;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    
+  }
+
+  .cimnek{
+    margin-top: 20px;
+    position: relative;
+    z-index: 100;
+    display: flex;
+    flex-direction: column;
+  }
+
+.grid {
+    
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 20px;
+    padding: 20px;
+    justify-items: center;
+    
+  }
+  
+  .card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #004b4717;
+    padding: 10px;
+    border-radius: 10px;
+    text-align: center;
+    color: white;
+    width: 100%;
+    max-width: 160px;
+    transition: transform 0.2s ease-in-out;
+    backdrop-filter: blur(5px);
+  }
+  
+  .card:hover {
+    transform: scale(1.05);
+  }
+  
+  .card img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 8px;
+  }
+
+  
+  

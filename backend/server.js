@@ -16,14 +16,17 @@ const uploadPaths = {
     sponsors: path.join(__dirname, "src/assets/sponsors"),
     teamMembers: path.join(__dirname, "src/assets/teamMembers"),
     alumni: path.join(__dirname, "src/assets/alumni"),
-    blogPosts: path.join(__dirname, "src/assets/blogPosts")
+    blogPosts: path.join(__dirname, "src/assets/blogPosts"),
+    galeria: path.join(__dirname, "src/assets/galeria")
 };
 
 const jsonPaths = {
     sponsors: path.join(__dirname, "src/assets/sponsors.json"),
     teamMembers: path.join(__dirname, "src/assets/teamMembers.json"),
     alumni: path.join(__dirname, "src/assets/alumni.json"),
-    blogPosts: path.join(__dirname, "src/assets/blogPosts.json")
+    blogPosts: path.join(__dirname, "src/assets/blogPosts.json"),
+    galeria: path.join(__dirname, "src/assets/galeria.json")
+
 };
 
 // Ensure directories & JSON files exist
@@ -69,8 +72,15 @@ app.post("/upload", upload.fields([{ name: "image" }, { name: "textFile" }]), (r
 
     
     if (req.files.image) {
-        newEntry.path = path.join("src/assets", category, req.files.image[0].filename);
+        if (category === "galeria" && Array.isArray(req.files.image)) {
+            newEntry.paths = req.files.image.map(f =>
+                path.join("src/assets", category, f.filename)
+            );
+        } else {
+            newEntry.path = path.join("src/assets", category, req.files.image[0].filename);
+        }
     }
+    
     if (req.files.textFile) {
         newEntry.textFile = path.join("src/assets", category, req.files.textFile[0].filename);
     }
@@ -88,6 +98,8 @@ app.post("/upload", upload.fields([{ name: "image" }, { name: "textFile" }]), (r
     } else if (category === "blogPosts") {
         newEntry.title = title;
         newEntry.date = date;
+    }else if (category === "galeria") {
+        newEntry.title = title;
     }
 
     const existingData = JSON.parse(fs.readFileSync(jsonPaths[category], "utf-8"));
