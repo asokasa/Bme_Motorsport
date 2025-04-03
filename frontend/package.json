@@ -16,6 +16,7 @@
     "@react-spring/parallax": "^9.7.5",
     "@tsparticles/react": "^3.0.0",
     "@tsparticles/slim": "^3.8.1",
+    "bme_motorsport": "file:..",
     "bootstrap": "^5.3.3",
     "cors": "^2.8.5",
     "express": "^4.21.2",

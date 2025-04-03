@@ -8,9 +8,20 @@ import { fileURLToPath } from "url";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
+
 const app = express();
 app.use(cors());
 app.use(express.json());
+
+const frontendPath = path.join(__dirname, "../frontend/dist");
+if (fs.existsSync(frontendPath)) {
+  app.use(express.static(frontendPath));
+  app.get("*", (req, res) => {
+    res.sendFile(path.join(frontendPath, "index.html"));
+  });
+} else {
+  console.warn("⚠️  Vite build not found in frontend/dist. Run `npm run build` in frontend.");
+}
 
 const uploadPaths = {
     sponsors: path.join(__dirname, "src/assets/sponsors"),
@@ -52,7 +63,7 @@ const storage = multer.diskStorage({
 const upload = multer({ storage });
 
 // 📌 GET: Fetch all data by category
-app.get("/data/:category", (req, res) => {
+app.get("/api/data/:category", (req, res) => {
     const { category } = req.params;
     if (!jsonPaths[category]) return res.status(400).json({ error: "Invalid category" });
 
@@ -62,7 +73,7 @@ app.get("/data/:category", (req, res) => {
 });
 
 
-app.post("/upload", upload.fields([{ name: "image" }, { name: "textFile" }]), (req, res) => {
+app.post("/api/upload", upload.fields([{ name: "image" }, { name: "textFile" }]), (req, res) => {
     console.log("Upload request received:", req.body);
 
     const { category, link, name, description, type, title, date } = req.body;
@@ -74,15 +85,15 @@ app.post("/upload", upload.fields([{ name: "image" }, { name: "textFile" }]), (r
     if (req.files.image) {
         if (category === "galeria" && Array.isArray(req.files.image)) {
             newEntry.paths = req.files.image.map(f =>
-                path.join("src/assets", category, f.filename)
+                `src/assets/${category}/${f.filename}`
             );
         } else {
-            newEntry.path = path.join("src/assets", category, req.files.image[0].filename);
+            newEntry.path = `src/assets/${category}/${req.files.image[0].filename}`;
         }
     }
     
     if (req.files.textFile) {
-        newEntry.textFile = path.join("src/assets", category, req.files.textFile[0].filename);
+        newEntry.path = `src/assets/${category}/${req.files.textFile[0].filename}`;
     }
 
 
@@ -124,7 +135,7 @@ app.put("/edit/:category/:id", (req, res) => {
 });
 
 // 📌 DELETE: Remove an entry
-app.delete("/delete/:category/:id", (req, res) => {
+app.delete("/api/delete/:category/:id", (req, res) => {
     const { category, id } = req.params;
 
     if (!jsonPaths[category]) {

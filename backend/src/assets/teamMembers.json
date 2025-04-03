@@ -19,5 +19,12 @@
     "name": "Csépe Zsombor",
     "description": "Csoportvezető",
     "type": "marketing csoport"
+  },
+  {
+    "id": 1743643142211,
+    "path": "src\\assets\\teamMembers\\1743643142201.webp",
+    "name": "Horvath Kornel",
+    "description": "Tervezo",
+    "type": "kompozit csoport"
   }
 ]

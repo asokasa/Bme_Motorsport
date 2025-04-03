@@ -28,7 +28,7 @@ const Csapattagok = () => {
         });
 
         setLoading(true);
-        fetch("http://localhost:5000/data/teamMembers")
+        fetch("http://localhost:5000/api/data/teamMembers")
             .then(response => response.json())
             .then(data => {
                 console.log("Data received from backend:", data);
