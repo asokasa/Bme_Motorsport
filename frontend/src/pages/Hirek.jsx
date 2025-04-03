@@ -5,7 +5,7 @@ const Hirek = () => {
     const [blogPosts, setBlogPosts] = useState([]);
 
     useEffect(() => {
-        fetch("http://localhost:5000/api/data/blogPosts")
+        fetch("/api/data/blogPosts")
             .then(response => response.json())
             .then(data => {
                 // Sort by date (latest first)
@@ -23,10 +23,10 @@ const Hirek = () => {
                         <div key={post.id} className={styles.hirek_post}>
                             <h2>{post.title}</h2>
                             {post.textFile && (
-                                <TextContent filePath={`http://localhost:5000/${post.textFile}`} />
+                                <TextContent filePath={`/${post.textFile}`} />
                             )}
                             {post.path && (
-                                <img src={`http://localhost:5000/${post.path}`} alt={post.title} className={styles.hirek_image} />
+                                <img src={`/${post.path}`} alt={post.title} className={styles.hirek_image} />
                             )}
                         </div>
                     ))

@@ -16,7 +16,7 @@ const AdminDashboard = () => {
   });
 
   useEffect(() => {
-    fetch(`http://localhost:5000/data/${category}`)
+    fetch(`/api/data/${category}`)
       .then(res => res.json())
       .then(setData);
   }, [category]);
@@ -30,7 +30,7 @@ const AdminDashboard = () => {
     if (!window.confirm("Are you sure you want to delete this?")) return;
 
     try {
-      const response = await fetch(`http://localhost:5000/delete/${category}/${id}`, {
+      const response = await fetch(`/api/delete/${category}/${id}`, {
         method: "DELETE",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ imagePath })
@@ -67,7 +67,7 @@ const AdminDashboard = () => {
     Object.keys(formData).forEach(key => data.append(key, formData[key]));
 
     try {
-      const response = await fetch("http://localhost:5000/upload", {
+      const response = await fetch("/api/upload", {
         method: "POST",
         body: data
       });
@@ -228,7 +228,7 @@ const AdminDashboard = () => {
       <ul>
         {data.map(entry => (
           <li key={entry.id}>
-            {entry.path && <img src={entry.path} alt={entry.name || "No Image"} width="80" />}
+            {entry.path && <img src={`/${entry.path}`} alt={entry.name || "No Image"} width="80" />}
             <strong>{entry.name || entry.title}</strong>
             <button onClick={() => handleDelete(entry.id, entry.path)}>Delete</button>
           </li>

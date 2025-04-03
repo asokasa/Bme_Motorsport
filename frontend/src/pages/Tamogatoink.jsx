@@ -30,7 +30,7 @@ const Tamogatoink = () => {
     }, []);
 
     useEffect(() => {
-        fetch("http://localhost:5000/api/data/sponsors")
+        fetch("/api/data/sponsors")
             .then(res => res.json())
             .then(data => {
                 console.log("Sponsor data received:", data);
@@ -48,7 +48,7 @@ const Tamogatoink = () => {
         return group.map(sponsor => (
             <a key={sponsor.id} href={sponsor.link} target="_blank" rel="noopener noreferrer">
                 <img
-                    src={`http://localhost:5000/${sponsor.path}`}
+                    src={`/${sponsor.path}`}
                     alt="Sponsor"
                     className={styles.sponsorImage}
                 />

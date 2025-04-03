@@ -7,7 +7,7 @@ const My_carousel = () => {
     const [blogPosts, setBlogPosts] = useState([]);
 
     useEffect(() => {
-        fetch("http://localhost:5000/data/blogPosts")
+        fetch("/api/data/blogPosts")
             .then(response => response.json())
             .then(data => {
                 // Sort by date (latest first) and take the latest 3
@@ -32,7 +32,7 @@ const My_carousel = () => {
                             <div className={styles.carouselImageContainer}>
                                 <img
                                     className={styles.carouselImage}
-                                    src={`http://localhost:5000/${post.path}`}
+                                    src={`/${post.path}`}
                                     alt={post.title}
                                 />
                             </div>

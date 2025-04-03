@@ -6,7 +6,7 @@ const Galeria = () => {
   const [loadedImages, setLoadedImages] = useState({});
 
   useEffect(() => {
-    fetch("http://localhost:5000/api/data/galeria")
+    fetch("/api/data/galeria")
       .then((res) => res.json())
       .then(setEvents);
   }, []);
@@ -29,13 +29,13 @@ const Galeria = () => {
             {event.paths?.map((img, i) => (
               <a
               key={i}
-              href={`http://localhost:5000/${img}`}
+              href={`/${img}`}
               target="_blank"
               rel="noopener noreferrer"
             >
               <img
                 key={i}
-                src={`http://localhost:5000/${img}`}
+                src={`/${img}`}
                 alt={`event-${event.title}-${i}`}
                 className={`${styles.image} ${
                   loadedImages[`${event.id}-${i}`] ? styles.loaded : styles.loading
