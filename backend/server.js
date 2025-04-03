@@ -16,9 +16,7 @@ app.use(express.json());
 const frontendPath = path.join(__dirname, "../frontend/dist");
 if (fs.existsSync(frontendPath)) {
   app.use(express.static(frontendPath));
-  app.get("*", (req, res) => {
-    res.sendFile(path.join(frontendPath, "index.html"));
-  });
+  
 } else {
   console.warn("⚠️  Vite build not found in frontend/dist. Run `npm run build` in frontend.");
 }
@@ -193,6 +191,10 @@ app.delete("/api/delete/:category/:id", (req, res) => {
 
 app.use("/src/assets", express.static(path.join(__dirname, "src/assets")));
 
+
+app.get("*", (req, res) => {
+    res.sendFile(path.join(frontendPath, "index.html"));
+  });
 
 // Start Server
 const PORT = 5000;

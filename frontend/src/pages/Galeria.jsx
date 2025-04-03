@@ -6,7 +6,7 @@ const Galeria = () => {
   const [loadedImages, setLoadedImages] = useState({});
 
   useEffect(() => {
-    fetch("http://localhost:5000/data/galeria")
+    fetch("http://localhost:5000/api/data/galeria")
       .then((res) => res.json())
       .then(setEvents);
   }, []);

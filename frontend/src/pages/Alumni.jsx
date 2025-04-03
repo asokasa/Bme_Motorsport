@@ -14,7 +14,7 @@ const Alumni = () => {
       setInit(true);
     });
 
-    fetch("http://localhost:5000/data/alumni")
+    fetch("http://localhost:5000/api/data/alumni")
       .then((res) => res.json())
       .then(setAlumni);
   }, []);

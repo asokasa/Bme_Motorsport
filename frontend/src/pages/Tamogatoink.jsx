@@ -30,7 +30,7 @@ const Tamogatoink = () => {
     }, []);
 
     useEffect(() => {
-        fetch("http://localhost:5000/data/sponsors")
+        fetch("http://localhost:5000/api/data/sponsors")
             .then(res => res.json())
             .then(data => {
                 console.log("Sponsor data received:", data);

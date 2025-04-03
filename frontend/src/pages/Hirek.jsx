@@ -5,7 +5,7 @@ const Hirek = () => {
     const [blogPosts, setBlogPosts] = useState([]);
 
     useEffect(() => {
-        fetch("http://localhost:5000/data/blogPosts")
+        fetch("http://localhost:5000/api/data/blogPosts")
             .then(response => response.json())
             .then(data => {
                 // Sort by date (latest first)
