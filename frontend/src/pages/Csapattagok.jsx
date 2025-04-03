@@ -28,7 +28,7 @@ const Csapattagok = () => {
         });
 
         setLoading(true);
-        fetch("http://localhost:5000/api/data/teamMembers")
+        fetch("/api/data/teamMembers")
             .then(response => response.json())
             .then(data => {
                 console.log("Data received from backend:", data);
@@ -96,7 +96,7 @@ const Csapattagok = () => {
                                     {teamMembers[group].map(member => (
                                         <div key={member.id} className={styles.memberCard}>
                                             <img
-                                                src={`http://localhost:5000/${member.path}`}
+                                                src={`/${member.path}`}
                                                 alt={member.name}
                                                 className={styles.memberImage}
                                             />
