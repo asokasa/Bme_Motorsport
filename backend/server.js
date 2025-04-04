@@ -1,201 +1,158 @@
 import express from "express";
-import multer from "multer";
+import mongoose from "mongoose";
 import cors from "cors";
-import fs from "fs";
+import multer from "multer";
+import dotenv from "dotenv";
+import { v2 as cloudinary } from "cloudinary";
+import { CloudinaryStorage } from "multer-storage-cloudinary";
 import path from "path";
 import { fileURLToPath } from "url";
 
+// === Setup ===
+dotenv.config();
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
-
-
 const app = express();
+
 app.use(cors());
 app.use(express.json());
 
-const frontendPath = path.join(__dirname, "../frontend/dist");
-if (fs.existsSync(frontendPath)) {
-  app.use(express.static(frontendPath));
-  
-} else {
-  console.warn("⚠️  Vite build not found in frontend/dist. Run `npm run build` in frontend.");
-}
+// === MongoDB Connection ===
+mongoose.connect(process.env.MONGODB_URI, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+}).then(() => console.log("✅ Connected to MongoDB"))
+  .catch(err => console.error("❌ MongoDB connection error:", err));
 
-const uploadPaths = {
-    sponsors: path.join(__dirname, "src/assets/sponsors"),
-    teamMembers: path.join(__dirname, "src/assets/teamMembers"),
-    alumni: path.join(__dirname, "src/assets/alumni"),
-    blogPosts: path.join(__dirname, "src/assets/blogPosts"),
-    galeria: path.join(__dirname, "src/assets/galeria")
-};
-
-const jsonPaths = {
-    sponsors: path.join(__dirname, "src/assets/sponsors.json"),
-    teamMembers: path.join(__dirname, "src/assets/teamMembers.json"),
-    alumni: path.join(__dirname, "src/assets/alumni.json"),
-    blogPosts: path.join(__dirname, "src/assets/blogPosts.json"),
-    galeria: path.join(__dirname, "src/assets/galeria.json")
-
-};
-
-// Ensure directories & JSON files exist
-Object.values(uploadPaths).forEach(dir => {
-    if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
+// === Cloudinary Setup ===
+cloudinary.config({
+  cloud_name: process.env.CLOUD_NAME,
+  api_key: process.env.CLOUD_KEY,
+  api_secret: process.env.CLOUD_SECRET,
 });
 
-Object.values(jsonPaths).forEach(jsonFile => {
-    if (!fs.existsSync(jsonFile)) fs.writeFileSync(jsonFile, JSON.stringify([]));
+const storage = new CloudinaryStorage({
+  cloudinary,
+  params: {
+    folder: "bme_motorsport_uploads",
+    allowed_formats: ["jpg", "jpeg", "png", "webp"],
+  },
 });
 
-// Multer file upload setup
-const storage = multer.diskStorage({
-    destination: (req, file, cb) => {
-        if (!uploadPaths[req.body.category]) {
-            return cb(new Error("Invalid category"), null);
-        }
-        cb(null, uploadPaths[req.body.category]);
-    },
-    filename: (req, file, cb) => cb(null, Date.now() + path.extname(file.originalname)),
+const upload = multer({
+  storage,
+  limits: { fileSize: 5 * 1024 * 1024 } // 5MB
 });
 
-const upload = multer({ storage });
+// === Models ===
+import TeamMember from "./models/TeamMember.js";
+import Sponsor from "./models/Sponsor.js";
+import Alumni from "./models/Alumni.js";
+import BlogPost from "./models/BlogPost.js";
+import GalleryEvent from "./models/GalleryEvent.js";
 
-// 📌 GET: Fetch all data by category
-app.get("/api/data/:category", (req, res) => {
-    const { category } = req.params;
-    if (!jsonPaths[category]) return res.status(400).json({ error: "Invalid category" });
+// === Upload Route ===
+app.post("/api/upload", upload.fields([{ name: "image" }, { name: "textFile" }]), async (req, res) => {
+  const { category, link, name, description, type, title, date } = req.body;
 
-    const data = JSON.parse(fs.readFileSync(jsonPaths[category], "utf-8"));
-    console.log(`🔍 [GET] /data/${category} → returning`, data);
-    res.json(data);
-});
+  try {
+    const imageFile = req.files.image?.[0];
+    const imageUrl = imageFile?.path || "";
+    const publicId = imageFile?.filename?.split(".")[0] || "";
 
-
-app.post("/api/upload", upload.fields([{ name: "image" }, { name: "textFile" }]), (req, res) => {
-    console.log("Upload request received:", req.body);
-
-    const { category, link, name, description, type, title, date } = req.body;
-    if (!jsonPaths[category]) return res.status(400).json({ error: "Invalid category" });
-
-    let newEntry = { id: Date.now() };
-
-    
-    if (req.files.image) {
-        if (category === "galeria" && Array.isArray(req.files.image)) {
-            newEntry.paths = req.files.image.map(f =>
-                `src/assets/${category}/${f.filename}`
-            );
-        } else {
-            newEntry.path = `src/assets/${category}/${req.files.image[0].filename}`;
-        }
-    }
-    
-    if (req.files.textFile) {
-        newEntry.path = `src/assets/${category}/${req.files.textFile[0].filename}`;
-    }
-
-
-    if (category === "sponsors") {
-        newEntry.link = link;
-        newEntry.type = type;
-    } else if (category === "teamMembers") {
-        newEntry.name = name;
-        newEntry.description = description;
-        newEntry.type = type;
+    if (category === "teamMembers") {
+      const saved = await TeamMember.create({ name, description, type, path: imageUrl, publicId });
+      return res.json({ success: true, data: saved });
+    } else if (category === "sponsors") {
+      const saved = await Sponsor.create({ link, type, path: imageUrl, publicId });
+      return res.json({ success: true, data: saved });
     } else if (category === "alumni") {
-        newEntry.name = name;
+      const saved = await Alumni.create({ name, path: imageUrl, publicId });
+      return res.json({ success: true, data: saved });
     } else if (category === "blogPosts") {
-        newEntry.title = title;
-        newEntry.date = date;
-    }else if (category === "galeria") {
-        newEntry.title = title;
+      const textFileUrl = req.files.textFile?.[0]?.path || "";
+      const saved = await BlogPost.create({ title, date, path: imageUrl, textFile: textFileUrl, publicId });
+      return res.json({ success: true, data: saved });
+    } else if (category === "galeria") {
+      const imageUrls = req.files.image?.map(f => f.path) || [];
+      const publicIds = req.files.image?.map(f => f.filename?.split(".")[0]) || [];
+      const saved = await GalleryEvent.create({ title, paths: imageUrls, publicIds });
+      return res.json({ success: true, data: saved });
     }
 
-    const existingData = JSON.parse(fs.readFileSync(jsonPaths[category], "utf-8"));
-    existingData.push(newEntry);
-    fs.writeFileSync(jsonPaths[category], JSON.stringify(existingData, null, 2));
-
-    res.json({ success: true, message: "File uploaded successfully", data: newEntry });
+    res.status(400).json({ success: false, error: "Unsupported category" });
+  } catch (err) {
+    console.error("Upload error:", err);
+    res.status(500).json({ success: false, error: "Server error" });
+  }
 });
 
-// 📌 PUT: Edit an existing entry
-app.put("/edit/:category/:id", (req, res) => {
-    const { category, id } = req.params;
-    const updatedEntry = req.body;
+// === Get Data Route ===
+app.get("/api/data/:category", async (req, res) => {
+  const { category } = req.params;
+  try {
+    if (category === "teamMembers") return res.json(await TeamMember.find());
+    if (category === "sponsors") return res.json(await Sponsor.find());
+    if (category === "alumni") return res.json(await Alumni.find());
+    if (category === "blogPosts") return res.json(await BlogPost.find());
+    if (category === "galeria") return res.json(await GalleryEvent.find());
 
-    if (!jsonPaths[category]) return res.status(400).json({ error: "Invalid category" });
-
-    let data = JSON.parse(fs.readFileSync(jsonPaths[category], "utf-8"));
-    data = data.map(entry => entry.id == id ? { ...entry, ...updatedEntry } : entry);
-    fs.writeFileSync(jsonPaths[category], JSON.stringify(data, null, 2));
-
-    res.json({ success: true, message: "Entry updated successfully", data: updatedEntry });
+    res.status(400).json({ error: "Invalid category" });
+  } catch (err) {
+    console.error("Fetch error:", err);
+    res.status(500).json({ error: "Server error" });
+  }
 });
 
-// 📌 DELETE: Remove an entry
-app.delete("/api/delete/:category/:id", (req, res) => {
-    const { category, id } = req.params;
+// === Delete Route ===
+app.delete("/api/delete/:category/:id", async (req, res) => {
+  const { category, id } = req.params;
 
-    if (!jsonPaths[category]) {
-        return res.status(400).json({ error: "Invalid category" });
+  try {
+    let entry;
+
+    if (category === "teamMembers") entry = await TeamMember.findById(id);
+    else if (category === "sponsors") entry = await Sponsor.findById(id);
+    else if (category === "alumni") entry = await Alumni.findById(id);
+    else if (category === "blogPosts") entry = await BlogPost.findById(id);
+    else if (category === "galeria") entry = await GalleryEvent.findById(id);
+    else return res.status(400).json({ error: "Invalid category" });
+
+    if (!entry) return res.status(404).json({ error: "Entry not found" });
+
+    if (entry.publicId) {
+      await cloudinary.uploader.destroy(entry.publicId);
     }
 
-    let data = JSON.parse(fs.readFileSync(jsonPaths[category], "utf-8"));
-    const entryToDelete = data.find(entry => entry.id == id);
-    const newData = data.filter(entry => entry.id != id);
-
-    if (!entryToDelete) {
-        return res.status(404).json({ error: "Entry not found" });
+    if (entry.publicIds) {
+      for (const pid of entry.publicIds) {
+        await cloudinary.uploader.destroy(pid);
+      }
     }
 
-    // 🔹 Get absolute file paths
-    const imagePath = entryToDelete.path ? path.join(__dirname, entryToDelete.path.replace("src/", "")) : null;
-    const textFilePath = entryToDelete.textFile ? path.join(__dirname, entryToDelete.textFile.replace("src/", "")) : null;
-
-    // 🔹 Debugging logs
-    console.log("\n--- Deletion Debug Info ---");
-    console.log("Category:", category);
-    console.log("ID:", id);
-    console.log("Image Path:", imagePath);
-    console.log("Text File Path:", textFilePath);
-    console.log("---------------------------\n");
-
-    // 🔹 Check if file exists before deleting
-    if (imagePath && fs.existsSync(imagePath)) {
-        try {
-            fs.unlinkSync(imagePath);
-            console.log("✅ Successfully deleted image file:", imagePath);
-        } catch (err) {
-            console.error("❌ Error deleting image file:", err);
-        }
-    } else {
-        console.warn("⚠️ Image file does not exist:", imagePath);
-    }
-
-    if (textFilePath && fs.existsSync(textFilePath)) {
-        try {
-            fs.unlinkSync(textFilePath);
-            console.log("✅ Successfully deleted text file:", textFilePath);
-        } catch (err) {
-            console.error("❌ Error deleting text file:", err);
-        }
-    } else {
-        console.warn("⚠️ Text file does not exist:", textFilePath);
-    }
-
-    // 🔹 Save the updated data
-    fs.writeFileSync(jsonPaths[category], JSON.stringify(newData, null, 2));
-
-    res.json({ success: true, message: "Entry and associated files deleted successfully" });
+    await entry.deleteOne();
+    res.json({ success: true });
+  } catch (err) {
+    console.error("Delete error:", err);
+    res.status(500).json({ error: "Server error" });
+  }
 });
 
-app.use("/src/assets", express.static(path.join(__dirname, "src/assets")));
-
-
+// === Serve Frontend ===
+const frontendPath = path.join(__dirname, "../frontend/dist");
+app.use(express.static(frontendPath));
 app.get("*", (req, res) => {
-    res.sendFile(path.join(frontendPath, "index.html"));
-  });
+  res.sendFile(path.join(frontendPath, "index.html"));
+});
 
-// Start Server
-const PORT = 5000;
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+// === File Size Error Handler ===
+app.use((err, req, res, next) => {
+  if (err.code === "LIMIT_FILE_SIZE") {
+    return res.status(413).json({ error: "File too large. Max 5MB allowed." });
+  }
+  next(err);
+});
+
+// === Start Server ===
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => console.log(`🚀 Server running on port ${PORT}`));

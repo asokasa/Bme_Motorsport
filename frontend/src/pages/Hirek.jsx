@@ -23,11 +23,18 @@ const Hirek = () => {
                         <div key={post.id} className={styles.hirek_post}>
                             <h2>{post.title}</h2>
                             {post.textFile && (
-                                <TextContent filePath={`/${post.textFile}`} />
-                            )}
-                            {post.path && (
-                                <img src={`/${post.path}`} alt={post.title} className={styles.hirek_image} />
-                            )}
+                        <TextContent filePath={post.textFile} />
+                        )}
+                        {post.path && (
+                        <img
+                            src={post.path}
+                            alt={post.title}
+                            loading="lazy"
+                            className={styles.hirek_image}
+                            onError={(e) => (e.target.style.display = "none")}
+                        />
+                        )}
+
                         </div>
                     ))
                 ) : (

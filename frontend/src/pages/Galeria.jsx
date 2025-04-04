@@ -29,20 +29,22 @@ const Galeria = () => {
             {event.paths?.map((img, i) => (
               <a
               key={i}
-              href={`/${img}`}
+              href={img}
               target="_blank"
               rel="noopener noreferrer"
             >
               <img
-                key={i}
-                src={`/${img}`}
+                src={img}
                 alt={`event-${event.title}-${i}`}
+                loading="lazy"
                 className={`${styles.image} ${
                   loadedImages[`${event.id}-${i}`] ? styles.loaded : styles.loading
                 }`}
                 onLoad={() => handleImageLoad(event.id, i)}
+                onError={(e) => (e.target.style.display = "none")}
               />
             </a>
+            
             ))}
           </div>
         </div>

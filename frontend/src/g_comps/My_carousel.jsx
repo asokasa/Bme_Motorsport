@@ -30,12 +30,15 @@ const My_carousel = () => {
                                 </Link>
                             </div>
                             <div className={styles.carouselImageContainer}>
-                                <img
-                                    className={styles.carouselImage}
-                                    src={`/${post.path}`}
-                                    alt={post.title}
-                                />
-                            </div>
+  <img
+    className={styles.carouselImage}
+    src={post.path}
+    alt={post.title}
+    loading="lazy"
+    onError={(e) => (e.target.style.display = "none")}
+  />
+</div>
+
                         </div>
                     </Carousel.Item>
                 ))

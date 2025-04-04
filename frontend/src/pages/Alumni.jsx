@@ -56,8 +56,12 @@ const Alumni = () => {
       
         {alumni.map((member) => (
           <div key={member.id} className={styles.card}>
-            <img src={`http://localhost:5000/${member.path}`} alt={member.name} />
-
+            <img
+              src={member.path}
+              alt={member.name}
+              loading="lazy"
+              onError={(e) => (e.target.style.display = "none")}
+            />
             <p>{member.name}</p>
           </div>
         ))}

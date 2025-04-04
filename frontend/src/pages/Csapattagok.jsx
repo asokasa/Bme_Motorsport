@@ -96,10 +96,13 @@ const Csapattagok = () => {
                                     {teamMembers[group].map(member => (
                                         <div key={member.id} className={styles.memberCard}>
                                             <img
-                                                src={`/${member.path}`}
+                                                src={member.path}
                                                 alt={member.name}
                                                 className={styles.memberImage}
+                                                loading="lazy"
+                                                onError={(e) => (e.target.style.display = "none")}
                                             />
+
                                             <h3 className={styles.memberName}>{member.name}</h3>
                                             <p className={styles.memberDesc}>{member.description}</p>
                                         </div>

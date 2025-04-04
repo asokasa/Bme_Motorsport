@@ -215,7 +215,16 @@ const AdminDashboard = () => {
       type="file"
       name="image"
       accept="image/*"
-      onChange={(e) => setImage(e.target.files)}
+      onChange={(e) => {
+      const files = Array.from(e.target.files);
+      const tooBig = files.find(f => f.size > 5 * 1024 * 1024);
+      if (tooBig) {
+        alert("Each image must be under 5MB.");
+        e.target.value = null;
+        return;
+      }
+      setImage(e.target.files);
+    }}
       multiple
       required
     />

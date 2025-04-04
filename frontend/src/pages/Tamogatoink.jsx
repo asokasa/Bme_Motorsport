@@ -48,10 +48,13 @@ const Tamogatoink = () => {
         return group.map(sponsor => (
             <a key={sponsor.id} href={sponsor.link} target="_blank" rel="noopener noreferrer">
                 <img
-                    src={`/${sponsor.path}`}
-                    alt="Sponsor"
-                    className={styles.sponsorImage}
+                src={sponsor.path}
+                alt="Sponsor"
+                loading="lazy"
+                className={styles.sponsorImage}
+                onError={(e) => (e.target.style.display = "none")}
                 />
+
             </a>
         ));
     };
