@@ -35,16 +35,7 @@
     flex-direction: column;
 }
 
-/* Display entries correctly without overflow */
-ul {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-    padding: 20px;
-    gap: 10px;
-    text-decoration: none;
-}
+
 
 /* Prevents page from cutting off content */
 #tsparticles {
@@ -108,3 +99,30 @@ ul {
     color: #00aba2;
   }
   
+
+
+  .dataTable {
+    width: 100%;
+    margin-top: 2rem;
+    border-collapse: collapse;
+    background-color: rgba(255, 255, 255, 0.05);
+    color: white;
+    text-align: left;
+  }
+  
+  .dataTable th,
+  .dataTable td {
+    padding: 10px;
+    border: 1px solid #00aba2;
+    vertical-align: middle;
+  }
+  
+  .dataTable th {
+    background-color: rgba(0, 171, 162, 0.3);
+    color: #00aba2;
+  }
+  
+  .dataTable img {
+    max-width: 100px;
+    border-radius: 8px;
+  }

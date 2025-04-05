@@ -3,6 +3,10 @@ import { useState, useEffect, useMemo } from "react";
 
 import Particles, { initParticlesEngine } from "@tsparticles/react";
 import { loadSlim } from "@tsparticles/slim";
+import { useRef } from "react";
+
+
+
 
 const AdminDashboard = () => {
   const [category, setCategory] = useState("sponsors");
@@ -14,6 +18,9 @@ const AdminDashboard = () => {
   const [formData, setFormData] = useState({
     link: "", name: "", description: "", type: "", title: "", date: ""
   });
+  const imageInputRef = useRef();
+const textFileInputRef = useRef();
+
 
   useEffect(() => {
     fetch(`/api/data/${category}`)
@@ -74,10 +81,24 @@ const AdminDashboard = () => {
       const result = await response.json();
       if (result.success) {
         alert("Upload successful!");
-        setFormData({ link: "", name: "", description: "", type: "", title: "", date: "" });
+        setFormData({
+          link: "",
+          name: "",
+          description: "",
+          title: "",
+          date: "",
+          type: ""
+        });
         setImage(null);
         setTextFile(null);
-      } else {
+        if (imageInputRef.current) imageInputRef.current.value = "";
+        if (textFileInputRef.current) textFileInputRef.current.value = "";
+      
+        fetch(`/api/data/${category}`)
+          .then(res => res.json())
+          .then(setData);
+      }
+       else {
         alert("Upload failed: " + result.error);
       }
     } catch (error) {
@@ -145,61 +166,153 @@ const AdminDashboard = () => {
 
       </select>
 
-      {/* Upload Forms - Only one visible at a time */}
       {category === "sponsors" && (
-        <form onSubmit={handleSubmit}>
-          <input type="file" name="image" accept="image/*" onChange={handleFileChange} required />
-          <input type="text" name="link" placeholder="Sponsor Link" onChange={handleChange} required />
-          <select name="type" onChange={handleChange} required>
-            <option value="gyémánt">Gyémánt</option>
-            <option value="arany">Arany</option>
-            <option value="ezüst">Ezüst</option>
-            <option value="bronz">Bronz</option>
-            <option value="további">További</option>
-            <option value="egyetemi">Egyetemi</option>
-          </select>
-          <button type="submit">Sponsor hozzáadása</button>
-        </form>
-      )}
+  <form onSubmit={handleSubmit}>
+    <input
+      type="file"
+      name="image"
+      accept="image/*"
+      onChange={handleFileChange}
+      ref={imageInputRef}
+      required
+    />
+    <input
+      type="text"
+      name="link"
+      value={formData.link}
+      placeholder="Sponsor Link"
+      onChange={handleChange}
+      required
+    />
+    <select
+      name="type"
+      value={formData.type}
+      onChange={handleChange}
+      required
+    >
+      <option value="">Válassz típust</option>
+      <option value="gyémánt">Gyémánt</option>
+      <option value="arany">Arany</option>
+      <option value="ezüst">Ezüst</option>
+      <option value="bronz">Bronz</option>
+      <option value="további">További</option>
+      <option value="egyetemi">Egyetemi</option>
+    </select>
+    <button type="submit">Sponsor hozzáadása</button>
+  </form>
+)}
 
-      {category === "teamMembers" && (
-        <form onSubmit={handleSubmit}>
-          <input type="file" name="image" accept="image/*" onChange={handleFileChange} required />
-          <input type="text" name="name" placeholder="Name" onChange={handleChange} required />
-          <textarea name="description" placeholder="Description" onChange={handleChange} required />
-          <select name="type" onChange={handleChange} required>
-            <option value="vezetők">Vezetők</option>
-            <option value="motorvezérlés csoport">Motorvezérlés csoport</option>
-            <option value="mechanika csoport">Mechanika csoport</option>
-            <option value="kompozit csoport">Kompozit csoport</option>
-            <option value="hybrid csoport">Hybrid csoport</option>
-            <option value="elektronika csoport">Elektronika csoport</option>
-            <option value="marketing csoport">Marketing csoport</option>
-            <option value="pénzügy">Pénzügy</option>
-          </select>
-          <button type="submit">Csapattag hozzáadása</button>
-        </form>
-      )}
+{category === "teamMembers" && (
+  <form onSubmit={handleSubmit}>
+    <input
+      type="file"
+      name="image"
+      accept="image/*"
+      onChange={handleFileChange}
+      ref={imageInputRef}
+      required
+    />
 
-      {category === "alumni" && (
-        <form onSubmit={handleSubmit}>
-          <input type="file" name="image" accept="image/*" onChange={handleFileChange} required />
-          <input type="text" name="name" placeholder="Name" onChange={handleChange} required />
-          <button type="submit">Alumni hozzáadása</button>
-        </form>
-      )}
+    <input
+      type="text"
+      name="name"
+      value={formData.name}
+      placeholder="Name"
+      onChange={handleChange}
+      required
+    />
 
-      {category === "blogPosts" && (
-        <form onSubmit={handleSubmit}>
-          <input type="text" name="title" placeholder="Blog Title" onChange={handleChange} required />
-          <input type="date" name="date" onChange={handleChange} required />
-          <label htmlFor="">.webP</label>
-          <input type="file" name="image" accept="image/*" onChange={handleFileChange} required />
-          <label htmlFor="">.txt</label>
-          <input type="file" name="textFile" accept=".txt" onChange={handleFileChange} required />
-          <button type="submit">Blog Post hozzáadása</button>
-        </form>
-      )}
+    <textarea
+      name="description"
+      value={formData.description}
+      placeholder="Description"
+      onChange={handleChange}
+      required
+    />
+
+    <select
+      name="type"
+      value={formData.type}
+      onChange={handleChange}
+      required
+    >
+      <option value="">Válassz csoportot</option>
+      <option value="vezetők">Vezetők</option>
+      <option value="motorvezérlés csoport">Motorvezérlés csoport</option>
+      <option value="mechanika csoport">Mechanika csoport</option>
+      <option value="kompozit csoport">Kompozit csoport</option>
+      <option value="hybrid csoport">Hybrid csoport</option>
+      <option value="elektronika csoport">Elektronika csoport</option>
+      <option value="marketing csoport">Marketing csoport</option>
+      <option value="pénzügy">Pénzügy</option>
+    </select>
+
+    <button type="submit">Csapattag hozzáadása</button>
+  </form>
+)}
+
+
+{category === "alumni" && (
+  <form onSubmit={handleSubmit}>
+    <input
+      type="file"
+      name="image"
+      accept="image/*"
+      onChange={handleFileChange}
+      ref={imageInputRef}
+      required
+    />
+    <input
+      type="text"
+      name="name"
+      value={formData.name}
+      placeholder="Name"
+      onChange={handleChange}
+      required
+    />
+    <button type="submit">Alumni hozzáadása</button>
+  </form>
+)}
+
+
+{category === "blogPosts" && (
+  <form onSubmit={handleSubmit}>
+    <input
+      type="text"
+      name="title"
+      value={formData.title}
+      placeholder="Blog Title"
+      onChange={handleChange}
+      required
+    />
+    <input
+      type="date"
+      name="date"
+      value={formData.date}
+      onChange={handleChange}
+      required
+    />
+    <label>.webP</label>
+    <input
+      type="file"
+      name="image"
+      accept="image/*"
+      onChange={handleFileChange}
+      ref={imageInputRef}
+      required
+    />
+    <label>.txt</label>
+    <input
+      type="file"
+      name="textFile"
+      accept=".txt"
+      onChange={handleFileChange}
+      ref={textFileInputRef}
+      required
+    />
+    <button type="submit">Blog Post hozzáadása</button>
+  </form>
+)}
 
 
 {category === "galeria" && (
@@ -207,6 +320,7 @@ const AdminDashboard = () => {
     <input
       type="text"
       name="title"
+      value={formData.title}
       placeholder="Esemény címe"
       onChange={handleChange}
       required
@@ -215,34 +329,74 @@ const AdminDashboard = () => {
       type="file"
       name="image"
       accept="image/*"
-      onChange={(e) => {
-      const files = Array.from(e.target.files);
-      const tooBig = files.find(f => f.size > 5 * 1024 * 1024);
-      if (tooBig) {
-        alert("Each image must be under 5MB.");
-        e.target.value = null;
-        return;
-      }
-      setImage(e.target.files);
-    }}
       multiple
+      ref={imageInputRef}
+      onChange={(e) => {
+        const files = Array.from(e.target.files);
+        const tooBig = files.find(f => f.size > 5 * 1024 * 1024);
+        if (tooBig) {
+          alert("Each image must be under 5MB.");
+          e.target.value = null;
+          return;
+        }
+        setImage(e.target.files);
+      }}
       required
     />
     <button type="submit">Képek feltöltése</button>
   </form>
 )}
 
-      {/* Display Section - Independent Selector */}
-      <h3>Existing {category}:</h3>
-      <ul>
-        {data.map(entry => (
-          <li key={entry.id}>
-            {entry.path && <img src={`/${entry.path}`} alt={entry.name || "No Image"} width="80" />}
-            <strong>{entry.name || entry.title}</strong>
-            <button onClick={() => handleDelete(entry.id, entry.path)}>Delete</button>
-          </li>
+<h3>Existing {category}:</h3>
+<table className={styles.dataTable}>
+  <thead>
+    <tr>
+      {data[0] && Object.keys(data[0]).map((key, i) => (
+        <th key={i}>{key}</th>
+      ))}
+      <th>Preview</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    {data.map((entry) => (
+      <tr key={entry._id}>
+        {Object.keys(entry).map((key, i) => (
+          <td key={i}>
+            {typeof entry[key] === 'string' && entry[key].startsWith('https://res.cloudinary.com')
+              ? <a href={entry[key]} target="_blank" rel="noopener noreferrer">link</a>
+              : Array.isArray(entry[key])
+              ? `${entry[key].length} image(s)`
+              : entry[key]}
+          </td>
         ))}
-      </ul>
+        <td>
+          {entry.path && (
+            <img
+              src={entry.path}
+              alt={entry.name || entry.title}
+              width="80"
+              loading="lazy"
+              onError={(e) => (e.target.style.display = "none")}
+            />
+          )}
+          {entry.paths && entry.paths[0] && (
+            <img
+              src={entry.paths[0]}
+              alt={entry.title}
+              width="80"
+              loading="lazy"
+              onError={(e) => (e.target.style.display = "none")}
+            />
+          )}
+        </td>
+        <td>
+          <button onClick={() => handleDelete(entry._id, entry.path)}>Delete</button>
+        </td>
+      </tr>
+    ))}
+  </tbody>
+</table>
 
     </div>
     </div>
