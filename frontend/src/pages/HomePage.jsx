@@ -38,13 +38,13 @@ const HomePage = () => {
 
 
         <div className={styles.home3}>
-          <div className={styles.home_3_pic1}></div>
+          <div className={styles.home_3_pic1}><img src="assets/triple_panel_1.jpg" alt="Car" /></div>
           <div className={styles.home_3_text}>
             <h2>Csapatunk</h2>
             <p>A BME Motorsport 2018 végén alakult csupán 8 fővel, a Budapesti Műszaki és Gazdaságtudományi Egyetemen azzal a céllal, hogy kiemelkedő fejlődési és tapasztalatszerzési lehetőséget biztosítson a fiatal, tehetséges és motorsport iránt érdeklődő hallgatóknak. Csapatunkat jelenleg 80 lelkes és elkötelezett mérnök, közgazdász, matematikus, valamint gazdaságtudományi szakos hallgató alkotja.</p>
             <a className={styles.support_button} href="/csapattagok">ISMERD MEG A CSAPATOT!</a>
           </div>
-          <div className={styles.home_3_pic2}></div>
+          <div className={styles.home_3_pic2}><img src="assets/triple_panel_2.jpg" alt="Car" /></div>
         </div>
       </div>
 
