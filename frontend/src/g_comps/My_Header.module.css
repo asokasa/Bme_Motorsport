@@ -1,6 +1,6 @@
 /* Fixed, auto-hiding navbar */
 .navbar {
-    position: fixed;
+    position: sticky;
     top: 0;
     width: 100%;
     background: #00ABA2;
@@ -9,13 +9,7 @@
     z-index: 1000;
   }
   
-  .navbar--visible {
-    transform: translateY(0);
-  }
   
-  .navbar--hidden {
-    transform: translateY(-100%);
-  }
   
   /* Flex container for three sections */
   .navbar__content {

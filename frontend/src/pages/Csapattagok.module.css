@@ -5,6 +5,10 @@
   height: 120vh; /* Full screen height */
   width: 100vw;
   background-color: aqua;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 
@@ -97,25 +101,55 @@
 .alumni_button {
   position: relative; /* Ensure it is positioned relative to the parent */
   z-index: 10; /* Higher z-index to appear above the particles */
-  background-color: #0092ac8c;
+  background-color: #000;
   color: white;
   text-decoration: none;
   padding: 20px 20px;
   border-width: 5px;
-  border-radius: 9px;
+  border-radius: 2vw;
   border-style: solid;
   border-color: #00aba2;
-  font-size: 1.7vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  display: flex;
+  
+
+  font-size: 1vw;
   font-weight: bold;
   display: inline-block;
+  height: 4vw;
+  width: 14vw;
   margin-top: 40px;
   margin-bottom: 40px;
   text-align: center;
-  transition: background-color 0.3s ease;
+  text-justify: distribute;
+  transition: background-color 0.8s ease, 
+              color 0.8s ease, 
+              box-shadow 0.8s ease,
+              font-size 0.8s ease;
 }
 
-.alumni_button:hover {
+.alumni_button:hover{
   background-color: #00aba2;
+  color: black;
+  box-shadow: 0 0 10px #00aba2, /* Inner glow */
+  0 0 20px #00aba2, /* Mid glow */
+  0 0 30px #00aba2; /* Outer glow */
+  font-size: 105%;
+
+  transition: background-color 0.8s ease, 
+              color 0.8s ease, 
+              box-shadow 0.8s ease,
+              font-size 0.8s ease;
+
 }
+
+
+
+
+
+
 
 

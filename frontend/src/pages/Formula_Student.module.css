@@ -1,10 +1,198 @@
-.formula_student {
-    width: 100vw;
-    min-height: 100vh; /* Ensure it spans the full viewport */
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between; /* Pushes content up, keeps footer at bottom */
-    background-color: black;
-    overflow-x: hidden;
+html {
+    scroll-behavior: smooth;
 }
 
+.formula_student {
+    width: 100vw;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: black;
+    overflow-x: hidden;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 5vw;
+
+}
+
+.intro{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin-top: 4vw;
+    
+}
+
+.intro p{
+    text-align: justify;
+}
+
+
+.categories {
+    margin-top: 5vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    width: 100%;
+}
+
+.categories > p {
+    text-align: center;
+    max-width: 800px;
+}
+
+.categories div {
+    max-width: 1000px;
+    width: 90%;
+    padding: 1rem;
+}
+
+.cv, .ev, .dv {
+    background-color: #1a1a1a;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 0 15px rgba(0, 171, 162, 0.3);
+}
+
+.cv img, .ev img, .dv img {
+    width: 100%;
+    height: auto;
+    margin-top: 1rem;
+    border-radius: 10px;
+}
+
+
+
+
+.statikus,
+.dinamikus{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin-top: 4vw;
+}
+
+
+h3{
+    color: white !important;
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+}
+
+h4{
+    color: white !important;
+    font-size: 1.2vw !important;
+    margin-bottom: 2rem;
+}
+
+.staticContainer,
+.dynamicContainer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 3.5rem;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+.vszCards {
+    width: 500px;
+    height: 380px;
+    perspective: 1000px;
+}
+
+.vszCardsInner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+}
+
+.vszCards:hover .vszCardsInner {
+    transform: rotateY(180deg) scale(1);
+    
+}
+
+.vszCardsFront,
+.vszCardsBack {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border: 2px solid #00aba2;
+    border-radius: 12px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.vszCardsFront {
+    background-color: #030303be;
+    color: white;
+}
+
+.vszCardsFront img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.vszCardsFront h5 {
+    position: absolute;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+    width: 100%;
+    text-align: center;
+    padding: 0.5rem;
+}
+
+.vszCardsBack {
+    background-color: #0f0f0f;
+    color: white;
+    transform: rotateY(180deg);
+    padding: 1rem;
+    overflow-y: auto;
+}
+
+
+
+.statikus h4,
+.dinamikus h4 {
+    margin-bottom: 3vw !important;
+}
+
+
+.intro h2{
+    color: white !important;
+    font-size: 5vw !important;
+}
+
+.intro p{
+    color: white !important;
+    font-size: 1vw !important;
+    margin-top: 2vw;
+    max-width: 1000px;
+    text-align: justify;
+}
+
+.introInner {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+}
+
+.introInner img {
+    max-width: 40vw;
+    height: auto;
+    border-radius: 10px;
+}

@@ -36,7 +36,7 @@ const Footer = () => {
         ))}
       </div>
 
-      <p><span>&#169; BME Motorsport</span> 2024 | Minden jog fenntartva </p>
+      <p><span>&#169; BME Motorsport</span> 2025 | Minden jog fenntartva </p>
     </footer>
   );
 };

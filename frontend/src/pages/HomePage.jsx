@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './HomePage.module.css';
-import Footer from '../g_comps/My_Footer';
+
 import My_carousel from '../g_comps/My_carousel';
 import SignUpForm from '../g_comps/SignUpForm';
 
@@ -9,7 +9,7 @@ const HomePage = () => {
   return (
     <div className={styles.homePage}>
       <div className={styles.banner_pic}>
-        <img src="/assets/main_bg.jpg" alt="" />
+        <img src="/assets/home_page/main_backg.webp" alt="" />
       </div>
 
 
@@ -34,8 +34,13 @@ const HomePage = () => {
             <img src="assets/home_page/Main_2_pic.jpg" alt="" />
           </div>
 
+          
+
         </div>
 
+        <div className={styles.home_23}>
+          <div className={styles.neonLine}></div>
+        </div>
 
         <div className={styles.home3}>
           <div className={styles.home_3_pic1}><img src="assets/triple_panel_1.jpg" alt="Car" /></div>
