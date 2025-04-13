@@ -69,7 +69,7 @@ const Formula_Student = () => (
 
         <div className={styles.versenyszamok}>
             <h3>Versenyszámok</h3>
-            <p>A versenyek lebonyolítása több napot ölel fel, és szigorúan strukturált menetrendet követ. A program a technikai ellenőrzéssel veszi kezdetét, ahol minden járművet részletes vizsgálatnak vetnek alá. A cél, hogy kizárólag a biztonsági és műszaki előírásoknak maradéktalanul megfelelő autók kerüljenek a pályára. Ezt követik a különböző versenyszámok, amelyek két fő kategóriába sorolhatók: statikus és dinamikus próbákra. A végeredményt a kettő kombinációja adja: a projektelméletre és prezentációkra épülő statikus számok 40%-ban, míg a pályán mutatott gyakorlati teljesítmény 60%-ban járul hozzá a csapat összpontszámához.</p>
+            <p className={styles.v_p}>A versenyek lebonyolítása több napot ölel fel, és szigorúan strukturált menetrendet követ. A program a technikai ellenőrzéssel veszi kezdetét, ahol minden járművet részletes vizsgálatnak vetnek alá. A cél, hogy kizárólag a biztonsági és műszaki előírásoknak maradéktalanul megfelelő autók kerüljenek a pályára. Ezt követik a különböző versenyszámok, amelyek két fő kategóriába sorolhatók: statikus és dinamikus próbákra. A végeredményt a kettő kombinációja adja: a projektelméletre és prezentációkra épülő statikus számok 40%-ban, míg a pályán mutatott gyakorlati teljesítmény 60%-ban járul hozzá a csapat összpontszámához.</p>
 
             <div className={styles.statikus}>
                 <h4>Statikus versenyszámok</h4>
