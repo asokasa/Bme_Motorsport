@@ -21,26 +21,50 @@ const Formula_Student = () => (
             
         </div>
 
+        <div className={styles.topDiv}>
+            <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                <path d="M1200 0L0 0 892.25 114.72 1200 0z" className={styles.shapeFill}></path>
+            </svg>
+        </div>
+
         <div className={styles.categories}>
             <h3>A Formula Student 3 kategóriája</h3>
             <p>A versenysorozat három technikai kategóriában zajlik, melyek különböző mérnöki kihívásokat és fókuszterületeket képviselnek:</p>
-            <div className={styles.cv}>
-                <h4>CV – Internal Combustion Vehicle / Belsőégésű motorral hajtott jármű</h4>
-                <p>Ebben a kategóriában a csapatok belső égésű motorral hajtott járművet építenek. A cél a hagyományos hajtáslánc optimalizálása, magas teljesítmény és megbízhatóság mellett.</p>
-                <img src="" alt="Internal Combustion Vehicle" />
+            <div className={styles.catContainer}>
+
+            <img src="assets/FS_Page/CV_EV_DV.jpg" alt="Internal Combustion Vehicle" />
+            
+            <div className={styles.cv_ev_dv}>
+                
+                <ul>
+                    <li>
+                    <h4>CV – Internal Combustion Vehicle / Belsőégésű motorral hajtott jármű</h4>
+                    <p>Ebben a kategóriában a csapatok belső égésű motorral hajtott járművet építenek. A cél a hagyományos hajtáslánc optimalizálása, magas teljesítmény és megbízhatóság mellett.</p>
+                    </li>
+                    <li>
+                    <h4>EV – Electric Vehicle / Elektromos meghajtású jármű</h4>
+                    <p>Az EV kategóriában teljesen elektromos meghajtású autók versenyeznek. A fókusz az energiamenedzsmenten, az akkumulátorok biztonságos kezelésén és a fejlett elektronikai rendszereken van.</p>
+                    </li>
+                    <li>
+                    <h4>DV – Driverless Vehicle / Önvezető Jármű</h4>
+                    <p>Az önvezető járművek kategóriájában a csapatok olyan rendszert fejlesztenek, amely emberi beavatkozás nélkül képes teljesíteni a pályát. A hangsúly az érzékelők, algoritmusok és a jármű autonóm irányításán van.</p>
+                    </li>
+                </ul> 
+                
             </div>
-            <div className={styles.ev}>
-                <h4>EV – Electric Vehicle / Elektromos meghajtású jármű</h4>
-                <p>Az EV kategóriában teljesen elektromos meghajtású autók versenyeznek. A fókusz az energiamenedzsmenten, az akkumulátorok biztonságos kezelésén és a fejlett elektronikai rendszereken van.</p>
-                <img src="" alt="Electric Vehicle" />
+
+            
             </div>
-            <div className={styles.dv}>
-                <h4>DV – Driverless Vehicle / Önvezető Jármű</h4>
-                <p>Az önvezető járművek kategóriájában a csapatok olyan rendszert fejlesztenek, amely emberi beavatkozás nélkül képes teljesíteni a pályát. A hangsúly az érzékelők, algoritmusok és a jármű autonóm irányításán van.</p>
-                <img src="" alt="Driverless Vehicle" />
+
+            
+        </div>
+
+        <div className={styles.bottomDiv}>
+                <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                    <path d="M892.25 114.72L0 0 0 120 1200 120 1200 0 892.25 114.72z" className={styles.shapeFill}></path>
+                </svg>
             </div>
         
-        </div>
 
 
         <div className={styles.versenyszamok}>
