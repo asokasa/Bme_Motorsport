@@ -10,13 +10,13 @@ const Csapattagok = () => {
 
     // This is the desired display order from the AdminDashboard's select
     const groupOrder = [
-        "vezetők",
-        "motorvezérlés csoport",
-        "mechanika csoport",
+        "Vezetőség",
+        "Hajtáslánc csoport",
+        "Járműdinamika csoport",
         "kompozit csoport",
         "hybrid csoport",
         "elektronika csoport",
-        "marketing csoport",
+        "Marketing és Szponzoráció csoport",
         "pénzügy"
     ];
 

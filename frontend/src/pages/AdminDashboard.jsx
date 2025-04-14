@@ -237,13 +237,13 @@ const textFileInputRef = useRef();
       required
     >
       <option value="">Válassz csoportot</option>
-      <option value="vezetők">Vezetők</option>
-      <option value="motorvezérlés csoport">Motorvezérlés csoport</option>
-      <option value="mechanika csoport">Mechanika csoport</option>
+      <option value="Vezetőség">Vezetőség</option>
+      <option value="Hajtáslánc csoport">Hajtáslánc csoport</option>
+      <option value="Járműdinamika csoport">Járműdinamika csoport</option>
       <option value="kompozit csoport">Kompozit csoport</option>
       <option value="hybrid csoport">Hybrid csoport</option>
       <option value="elektronika csoport">Elektronika csoport</option>
-      <option value="marketing csoport">Marketing csoport</option>
+      <option value="Marketing és Szponzoráció csoport">Marketing és Szponzoráció csoport</option>
       <option value="pénzügy">Pénzügy</option>
     </select>
 
