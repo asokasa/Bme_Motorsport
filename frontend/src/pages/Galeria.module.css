@@ -72,5 +72,7 @@
   .loaded {
     filter: none;
     opacity: 1;
+    
   }
+  /* Responsive adjustments */
   
