@@ -9,7 +9,7 @@ const HomePage = () => {
   return (
     <div className={styles.homePage}>
       <div className={styles.banner_pic}>
-        <img src="/assets/home_page/main_backg.webp" alt="" />
+        <img src="/assets/home_page/main_backg.jpg" alt="" />
       </div>
 
 
