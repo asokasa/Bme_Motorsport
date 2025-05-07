@@ -1,7 +1,7 @@
 import React, { useRef, useEffect, useState } from 'react'
 import { Canvas,useThree, useFrame } from '@react-three/fiber'
 import { OrbitControls, useGLTF, useTexture } from '@react-three/drei'
-import { EffectComposer, Bloom } from '@react-three/postprocessing'
+
 
 import * as THREE from 'three'
 
@@ -144,18 +144,7 @@ function KeyboardOrbitCamera() {
 
 
 
-function Effects() {
-    return (
-      <EffectComposer>
-        <Bloom
-          intensity={2.5}
-          kernelSize={3}
-          luminanceThreshold={0.1}
-          luminanceSmoothing={0.9}
-        />
-      </EffectComposer>
-    )
-  }
+
 
   
 
