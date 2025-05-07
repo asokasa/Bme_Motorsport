@@ -1,6 +1,8 @@
 import React from 'react';
 import styles from './HomePage.module.css';
 
+import CarScene from '../g_comps/CarScene'
+
 import My_carousel from '../g_comps/My_carousel';
 import SignUpForm from '../g_comps/SignUpForm';
 
@@ -9,7 +11,7 @@ const HomePage = () => {
   return (
     <div className={styles.homePage}>
       <div className={styles.banner_pic}>
-        <img src="/assets/home_page/main_backg.jpg" alt="" />
+        <CarScene />
       </div>
 
 
