@@ -11,7 +11,8 @@ const HomePage = () => {
   return (
     <div className={styles.homePage}>
       <div className={styles.banner_pic}>
-        <CarScene />
+        <img src="/assets/home_page/main_backg.jpg" alt="" />
+        {/* <CarScene />*/}
       </div>
 
 
