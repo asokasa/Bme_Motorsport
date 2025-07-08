@@ -21,7 +21,7 @@ export function CarModel_three(props) {
     groupRef.current?.traverse((child) => {
       if (child.isMesh) {
         child.castShadow = true
-        child.receiveShadow = false
+        child.receiveShadow = true
         child.material.side = THREE.DoubleSide
         
         // Fix texture encoding
@@ -56,8 +56,8 @@ export function Podium(props) {
   const { nodes, materials } = useGLTF('/assets/3D_models/podium/Podium.gltf')
   return (
     <group {...props} dispose={null} scale={2} position={[0,-4,0]}>
-      <mesh geometry={nodes.Cylinder_1.geometry} material={materials.Podium_asphalt} receiveShadow />
-      <mesh geometry={nodes.Cylinder_2.geometry} material={materials.podium_side} receiveShadow />
+      <mesh geometry={nodes.Cylinder_1.geometry} material={materials.Podium_asphalt} receiveShadow castShadow />
+      <mesh geometry={nodes.Cylinder_2.geometry} material={materials.podium_side} receiveShadow castShadow/>
     </group>
   )
 }
@@ -167,8 +167,8 @@ const CarScene = () => (
     <ambientLight intensity={0.1} color="#121212" />
     <directionalLight
       castShadow
-      position={[-5, 20, -30]}
-      intensity={0.1}
+      position={[0, 0, 30]}
+      intensity={0.5}
       shadow-mapSize-width={4096}
       shadow-mapSize-height={4096}
       shadow-camera-left={-50}
@@ -177,10 +177,29 @@ const CarScene = () => (
       shadow-camera-bottom={-50}
       shadow-camera-near={1}
       shadow-camera-far={100}
+      shadow-bias={-0.001}
     />
+    <mesh position={[0, 0, 30]}>
+      <boxGeometry args={[5, 5, 5]} />
+      <meshStandardMaterial color="red" />
+    </mesh>
+
+
     <pointLight position={[-10, 0, 20]} intensity={3.5} distance={15} color="#00aba2" />
+    <mesh position={[-10, 0, 20]}>
+      <boxGeometry args={[3, 3, 3]} />
+      <meshStandardMaterial color="red" />
+    </mesh>
     <pointLight position={[10, 0, 20]} intensity={3.5} distance={15} color="#00aba2" />
+    <mesh position={[10, 0, 20]}>
+      <boxGeometry args={[3, 3, 3]} />
+      <meshStandardMaterial color="red" />
+    </mesh>
     <pointLight position={[5, 10, 5]} intensity={3.5} distance={15} color="#00aba2" />
+    <mesh position={[5, 10, 5]}>
+      <boxGeometry args={[3, 3, 3]} />
+      <meshStandardMaterial color="red" />
+    </mesh>
     
     <fog attach="fog" args={['#00524e', 30, 80]} />
 
@@ -189,7 +208,7 @@ const CarScene = () => (
     <Floor/>
 
     {/* Static black wall behind the car */}
-    <mesh position={[0, 2, -37]} rotation={[0, 0, 0]} receiveShadow>
+    <mesh position={[0, 2, -39]} rotation={[0, 0, 0]} receiveShadow>
       <boxGeometry args={[150, 50, 0.5]} />
       <meshStandardMaterial  color="black" roughness={1}/>
     </mesh>

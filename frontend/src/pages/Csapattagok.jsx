@@ -13,7 +13,8 @@ const Csapattagok = () => {
         "Vezetőség",
         "Hajtáslánc csoport",
         "Járműdinamika csoport",
-        "kompozit csoport",
+        "Váz csoport",
+        "Aerodinamika csoport",
         "hybrid csoport",
         "elektronika csoport",
         "Marketing és Szponzoráció csoport",
@@ -96,7 +97,10 @@ const Csapattagok = () => {
                                     {teamMembers[group].map(member => (
                                         <div key={member.id} className={styles.memberCard}>
                                             <img
-                                                src={member.path}
+                                                src={member.path.replace(
+                                                    '/upload/',
+                                                    '/upload/w_400,q_auto,f_auto/'
+                                                )}
                                                 alt={member.name}
                                                 className={styles.memberImage}
                                                 loading="lazy"
