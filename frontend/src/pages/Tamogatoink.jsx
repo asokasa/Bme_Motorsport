@@ -48,7 +48,7 @@ const Tamogatoink = () => {
         return group.map(sponsor => (
             <a key={sponsor.id} href={sponsor.link} target="_blank" rel="noopener noreferrer">
                 <img
-                src={member.path.replace(
+                src={sponsor.path.replace(
                 '/upload/',
                 '/upload/w_200,q_auto,f_auto/'
                 )}
